@@ -34,6 +34,7 @@
     by spatial confounding. Our results show that prediction accuracy alone is insufficient for
     reliable biological discovery and establish valid statistical inference as an essential
     component of reconstructed spatial transcriptomics.
+  paper_url: https://www.biorxiv.org/content/10.64898/2026.06.19.733432v2
 - date: '2026-10-09'
   speakers: [ergan_shang]
   title: Predicting Single-Cell Perturbation Responses in New Contexts with SCARF
