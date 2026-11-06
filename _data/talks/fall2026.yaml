@@ -16,6 +16,22 @@
 #     kind: no_meeting
 #     label: Fall Break
 
+- date: '2026-10-23'
+  speakers: [julia_elrod]
+  title: Benchmarking scRNA-seq normalization methods for accurate gene expression distribution recovery
+  abstract: >-
+    When choosing a sequencing method to quantify single-cell RNA expression, there is a tradeoff
+    between throughput -- the number of cells sequenced -- and resolution -- the number of reads
+    per cell. High-throughput technologies such as 10x Chromium are a popular choice because they
+    can provide a more complete picture of the cell population of interest and allow for the
+    detection of rare cell types. To overcome the lower resolution of these methods compared to
+    higher-depth technologies such as Smart-seq3, many single-cell normalization methods have been
+    introduced for the recovery of accurate gene expression distributions from 10x data. We have
+    benchmarked a selection of approaches on multiple datasets, evaluating their ability to recover
+    true expression distributions using total variation distance, squared Hellinger distance, and
+    Kullback-Leibler divergence. We show that bayNorm has the most accurate recovery of gene
+    expression distributions and recommend its use for single-cell normalization prior to
+    log-transformation.
 - date: '2026-11-06'
   speakers: [annaelaine_rosengart]
   title: Mapping transcriptional responses to cellular perturbations with RNA fingerprinting
