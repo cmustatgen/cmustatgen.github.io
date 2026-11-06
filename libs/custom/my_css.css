@@ -660,9 +660,9 @@ mark {
 }
 .person { text-align: center; min-width: 0; }
 .person-photo {
-  width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
-  object-position: 50% 25%;   /* sources are 4:5; bias up for faces */
-  border-radius: 3px; display: block;
+  width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
+  object-position: 50% 30%;   /* sources are 4:5; bias up for faces */
+  border-radius: 50%; display: block;   /* circular headshots */
   background: var(--bg-sunk);
 }
 

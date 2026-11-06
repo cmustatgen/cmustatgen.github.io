@@ -4,14 +4,45 @@
 #
 # Fields: name (required), roster, position, affiliation, affiliation2,
 #         url, img (/assets/people/<file>, 320x400 recommended), sort_as
-#
-# Example:
-# jane_doe:
-#   name: Jane Doe
-#   roster: faculty
-#   position: Assistant Professor
-#   affiliation: Statistics & Data Science
-#   url: https://www.stat.cmu.edu/~jdoe/
-#   img: /assets/people/janeDoe.jpg
 
-{}
+kathryn_roeder:
+  name: Kathryn Roeder
+  roster: faculty
+  position: UPMC Professor of Statistics and Life Sciences
+  affiliation: Statistics & Data Science
+  affiliation2: Computational Biology
+  url: https://kathrynmroeder.github.io/
+  img: /assets/people/kathryn-roeder.jpg
+bernie_devlin:
+  name: Bernie Devlin
+  roster: faculty
+  position: Professor
+  affiliation: Psychiatry, University of Pittsburgh
+  affiliation2: Statistics & Data Science
+  url: https://devlinbj.github.io/
+  img: /assets/people/bernie-devlin.jpg
+gonzalo_mena:
+  name: Gonzalo Mena
+  roster: faculty
+  position: Assistant Professor
+  affiliation: Statistics & Data Science
+  url: https://gomena.github.io/
+  img: /assets/people/gmena.jpg
+lambertus_klei:
+  name: Lambertus Klei
+  roster: faculty
+  affiliation: Psychiatry, University of Pittsburgh
+weijing_tang:
+  name: Weijing Tang
+  roster: faculty
+  position: Assistant Professor
+  affiliation: Statistics & Data Science
+  url: https://sites.google.com/andrew.cmu.edu/weijingtang/home
+  img: /assets/people/weijing-tang.jpg
+will_townes:
+  name: Will Townes
+  roster: faculty
+  position: Assistant Professor
+  affiliation: Statistics & Data Science
+  url: https://willtownes.github.io/
+  img: /assets/people/will-townes.jpg
