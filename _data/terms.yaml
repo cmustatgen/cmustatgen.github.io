@@ -4,8 +4,7 @@
 
 - key: fall2026
   name: Fall 2026
-  status: upcoming
-  # default_weekday: Tuesday
-  # default_room: BH 232M
-  # default_time: 12-1pm
-  # note: 'Time & location TBD'
+  status: current
+  default_room: BH 129Q
+  default_time: 2pm
+  note: We meet every other Friday.
