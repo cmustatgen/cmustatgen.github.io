@@ -10,7 +10,7 @@ Everything the site shows lives in `_data/`:
 | File | What it holds |
 |------|---------------|
 | `_data/people.yaml` | Every person, keyed by slug (name, position, affiliation, url, photo) |
-| `_data/roster.yaml` | Who appears on `/people/`, grouped as faculty / postdoc / student / alumni |
+| `_data/roster.yaml` | Who appears on `/people/`, grouped as faculty / member / alumni |
 | `_data/terms.yaml` | Semesters, newest first; the first entry is the homepage schedule |
 | `_data/talks/<term>.yaml` | One file per semester with the talks |
 

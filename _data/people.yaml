@@ -1,5 +1,5 @@
 # Every person the site names, keyed by slug.
-#   roster: present  -> group member, appears on /people/
+#   roster: faculty | member | alumni -> appears on /people/
 #   roster: absent   -> external speaker, appears only in talk bylines
 #
 # Fields: name (required), roster, position, affiliation, affiliation2,
@@ -8,7 +8,6 @@
 kathryn_roeder:
   name: Kathryn Roeder
   roster: faculty
-  position: UPMC Professor of Statistics and Life Sciences
   affiliation: Statistics & Data Science
   affiliation2: Computational Biology
   url: https://kathrynmroeder.github.io/
@@ -16,15 +15,12 @@ kathryn_roeder:
 bernie_devlin:
   name: Bernie Devlin
   roster: faculty
-  position: Professor
   affiliation: Psychiatry, University of Pittsburgh
-  affiliation2: Statistics & Data Science
   url: https://devlinbj.github.io/
   img: /assets/people/bernie-devlin.jpg
 gonzalo_mena:
   name: Gonzalo Mena
   roster: faculty
-  position: Assistant Professor
   affiliation: Statistics & Data Science
   url: https://gomena.github.io/
   img: /assets/people/gmena.jpg
@@ -32,17 +28,90 @@ lambertus_klei:
   name: Lambertus Klei
   roster: faculty
   affiliation: Psychiatry, University of Pittsburgh
+  img: /assets/people/lambertus-klei.jpg
 weijing_tang:
   name: Weijing Tang
   roster: faculty
-  position: Assistant Professor
   affiliation: Statistics & Data Science
   url: https://sites.google.com/andrew.cmu.edu/weijingtang/home
   img: /assets/people/weijing-tang.jpg
 will_townes:
   name: Will Townes
   roster: faculty
-  position: Assistant Professor
   affiliation: Statistics & Data Science
   url: https://willtownes.github.io/
   img: /assets/people/will-townes.jpg
+
+# ---- Members
+andrea_donazzan:
+  name: Andrea Donazzan
+  roster: member
+  img: /assets/people/andrea-donazzan.jpg
+alice_zhang:
+  name: Alice Zhang
+  roster: member
+  img: /assets/people/alice-zhang.jpg
+annaelaine_rosengart:
+  name: Annaelaine Rosengart
+  roster: member
+  url: https://aerosengart.github.io
+  img: /assets/people/annaelaine-rosengart.jpg
+catherine_wang:
+  name: Catherine Wang
+  roster: member
+  img: /assets/people/catherine-wang.jpg
+eric_chen:
+  name: Eric Chen
+  roster: member
+  url: https://ericchen28.github.io/
+  img: /assets/people/eric-chen.jpg
+ergan_shang:
+  name: Ergan Shang
+  roster: member
+  url: https://ergan-shang.github.io/
+  img: /assets/people/ergan-shang.jpg
+emily_wang:
+  name: Emily Wang
+  roster: member
+  img: /assets/people/emily-wang.jpg
+julia_elrod:
+  name: Julia Elrod
+  roster: member
+  url: https://juliakelrod.com/
+  img: /assets/people/julia-elrod.jpg
+lena_liang:
+  name: Lena Liang
+  roster: member
+lorenzo_testa:
+  name: Lorenzo Testa
+  roster: member
+  url: https://testalorenzo.github.io
+  img: /assets/people/lorenzo-testa.jpg
+lujing_zhang:
+  name: Lujing Zhang
+  roster: member
+  img: /assets/people/lujing-zhang.jpg
+meitan_wang:
+  name: Meitan Wang
+  roster: member
+  img: /assets/people/meitan-wang.jpg
+rebecca_farina:
+  name: Rebecca Farina
+  roster: member
+  url: https://rebyfa98.github.io
+  img: /assets/people/rebecca-farina.jpg
+tran_quy_thien_pham:
+  name: Tran Quy Thien Pham
+  roster: member
+yinan_guo:
+  name: Yinan Guo
+  roster: member
+  img: /assets/people/yinan-guo.jpg
+ziqi_liu:
+  name: Ziqi Liu
+  roster: member
+  img: /assets/people/ziqi-liu.jpg
+zhixin_lai:
+  name: Zhixin Lai
+  roster: member
+  img: /assets/people/zhixin-lai.jpg
