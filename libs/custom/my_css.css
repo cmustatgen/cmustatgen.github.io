@@ -396,6 +396,16 @@ html { scroll-behavior: smooth; }
 .talk.is-archive .talk-date { width: 80px; }
 .talk-body { min-width: 0; flex: 1; }
 
+/* Speaker headshot beside the row. Fixed box so every title starts at the
+   same x whether or not the row has a speaker; a second speaker overlaps. */
+.talk-speakers { flex-shrink: 0; min-width: 40px; display: flex; align-items: flex-start; }
+.talk-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  object-fit: cover; object-position: 50% 30%; display: block;
+  background: var(--bg-sunk); border: 1px solid var(--hairline);
+}
+.talk-avatar + .talk-avatar { margin-left: -12px; }
+
 .talk-title {
   font-size: var(--fs-body);
   font-weight: 600; color: var(--text); line-height: 1.4;

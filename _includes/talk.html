@@ -57,6 +57,22 @@
      {% if kind == 'talk' %}data-search="{{ haystack | strip_newlines | downcase | escape_once }}"{% endif %}
      {% if t.date %}id="t-{{ t.date }}{% if t.speakers.first %}-{{ t.speakers.first }}{% endif %}"{% endif %}>
   <div class="talk-date">{{ t.date | date: date_fmt }}</div>
+  {%- comment -%} Speaker headshots, schedule mode only; the column is always
+    present so titles stay aligned across talk and break rows. {%- endcomment -%}
+  {%- if mode != 'archive' -%}
+  <div class="talk-speakers" aria-hidden="true">
+    {%- if kind == 'talk' -%}
+      {%- for slug in t.speakers -%}
+        {%- assign sp = site.data.people[slug] -%}
+        {%- if sp -%}
+    <img class="talk-avatar" loading="lazy"
+         src="{{ sp.img | default: '/assets/people/placeholder.jpg' | relative_url }}"
+         alt="" width="40" height="40">
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+  {%- endif -%}
   <div class="talk-body">
 
     {%- if kind == 'talk' -%}
