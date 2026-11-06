@@ -4,18 +4,30 @@ title: Archive
 permalink: /archive/
 ---
 
-{%- comment -%} Only past-semester talks with a title. {%- endcomment -%}
+{%- comment -%} Every talk that has already happened, across all terms
+   including the current one: a real title (not TBD) and a date no later
+   than the build date. A talk moves here on the first deploy after it
+   takes place. {%- endcomment -%}
+{%- assign today = site.time | date: '%Y-%m-%d' -%}
 {%- assign total = 0 -%}
 {%- assign semesters = 0 -%}
 {%- assign newest_archived = nil -%}
+{%- assign term_keys = "" | split: "" -%}
 {%- for term in site.data.terms -%}
-  {%- if term.status != 'upcoming' and term.status != 'current' -%}
+  {%- assign n = 0 -%}
+  {%- for t in site.data.talks[term.key] -%}
+    {%- assign d = t.date | date: '%Y-%m-%d' -%}
+    {%- assign title = t.title | strip -%}
+    {%- if t.kind == nil and title != '' and title != 'TBD' and title != 'Title TBD' and d <= today -%}
+      {%- assign n = n | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if n > 0 -%}
+    {%- assign term_keys = term_keys | push: term.key -%}
     {%- assign semesters = semesters | plus: 1 -%}
+    {%- assign total = total | plus: n -%}
     {%- if newest_archived == nil %}{% assign newest_archived = term %}{% endif -%}
     {%- assign oldest_archived = term -%}
-    {%- for t in site.data.talks[term.key] -%}
-      {%- if t.kind == nil and t.title %}{% assign total = total | plus: 1 %}{% endif -%}
-    {%- endfor -%}
   {%- endif -%}
 {%- endfor -%}
 
@@ -23,7 +35,7 @@ permalink: /archive/
   <div class="section-header-row">
     <h4>Archive</h4>
     {%- if semesters > 0 -%}
-    <span class="term-meta">{{ semesters }} semester{% unless semesters == 1 %}s{% endunless %} &middot; {{ oldest_archived.name }} &ndash; {{ newest_archived.name }}</span>
+    <span class="term-meta">{{ semesters }} semester{% unless semesters == 1 %}s{% endunless %}{% if oldest_archived.key != newest_archived.key %} &middot; {{ oldest_archived.name }} &ndash; {{ newest_archived.name }}{% endif %}</span>
     {%- endif -%}
   </div>
 
@@ -31,15 +43,12 @@ permalink: /archive/
   <div class="archive-controls">
     <input class="archive-search" type="search" placeholder="Search talks by title, speaker or year&hellip;"
            aria-label="Search talks" autocomplete="off" spellcheck="false">
-    <span class="archive-count">{{ total }} talks</span>
+    <span class="archive-count">{{ total }} talk{% unless total == 1 %}s{% endunless %}</span>
     <select class="term-jump" aria-label="Jump to a semester">
       <option value="">Jump to&hellip;</option>
       {%- for term in site.data.terms -%}
-        {%- if term.status != 'upcoming' and term.status != 'current' -%}
-          {%- assign n = site.data.talks[term.key] | where_exp: "t", "t.kind == nil" | where_exp: "t", "t.title" -%}
-          {%- if n.size > 0 %}
+        {%- if term_keys contains term.key %}
       <option value="term-{{ term.key }}">{{ term.name }}</option>
-          {%- endif -%}
         {%- endif -%}
       {%- endfor %}
     </select>
@@ -49,26 +58,29 @@ permalink: /archive/
   <p class="archive-empty is-hidden">No talks match that search.</p>
 
   {%- if total == 0 -%}
-  <p class="prose">Nothing here yet. Past semesters will appear once the first one wraps up.</p>
+  <p class="prose">Nothing here yet. Talks appear once they have taken place.</p>
   {%- endif -%}
 
   {%- for term in site.data.terms -%}
-    {%- if term.status != 'upcoming' and term.status != 'current' -%}
-      {%- assign all = site.data.talks[term.key] -%}
-      {%- assign talks = all | where_exp: "t", "t.kind == nil" | where_exp: "t", "t.title" -%}
-      {%- if talks.size > 0 -%}
+    {%- if term_keys contains term.key -%}
     <div class="term-section" id="term-{{ term.key }}">
+      {%- assign shown = 0 -%}
+      {%- capture rows -%}
+        {%- for t in site.data.talks[term.key] -%}
+          {%- assign d = t.date | date: '%Y-%m-%d' -%}
+          {%- assign title = t.title | strip -%}
+          {%- if t.kind == nil and title != '' and title != 'TBD' and title != 'Title TBD' and d <= today -%}
+            {%- assign shown = shown | plus: 1 -%}
+            {% include talk.html talk=t term=term mode='archive' %}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
       <div class="term-header">
         <span class="term-name">{{ term.name }}</span>
-        <span class="term-meta">{{ talks.size }} talk{% unless talks.size == 1 %}s{% endunless %}</span>
+        <span class="term-meta">{{ shown }} talk{% unless shown == 1 %}s{% endunless %}</span>
       </div>
-      <div class="talk-list">
-        {%- for t in talks -%}
-          {% include talk.html talk=t term=term mode='archive' %}
-        {%- endfor -%}
-      </div>
+      <div class="talk-list">{{ rows }}</div>
     </div>
-      {%- endif -%}
     {%- endif -%}
   {%- endfor -%}
 </div>
