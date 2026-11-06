@@ -57,9 +57,8 @@
      {% if kind == 'talk' %}data-search="{{ haystack | strip_newlines | downcase | escape_once }}"{% endif %}
      {% if t.date %}id="t-{{ t.date }}{% if t.speakers.first %}-{{ t.speakers.first }}{% endif %}"{% endif %}>
   <div class="talk-date">{{ t.date | date: date_fmt }}</div>
-  {%- comment -%} Speaker headshots, schedule mode only; the column is always
-    present so titles stay aligned across talk and break rows. {%- endcomment -%}
-  {%- if mode != 'archive' -%}
+  {%- comment -%} Speaker headshots; the column is always present so titles
+    stay aligned across talk and break rows. {%- endcomment -%}
   <div class="talk-speakers" aria-hidden="true">
     {%- if kind == 'talk' -%}
       {%- for slug in t.speakers -%}
@@ -72,7 +71,6 @@
       {%- endfor -%}
     {%- endif -%}
   </div>
-  {%- endif -%}
   <div class="talk-body">
 
     {%- if kind == 'talk' -%}
