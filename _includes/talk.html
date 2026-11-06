@@ -29,12 +29,12 @@
 {%- assign is_next = false -%}
 {%- if include.next_date and t.date == include.next_date %}{% assign is_next = true %}{% endif -%}
 
-{%- comment -%} Archive bylines are plain text; live ones stay linked. {%- endcomment -%}
+{%- comment -%} Speaker names link to their homepages in both modes. {%- endcomment -%}
 {%- capture byline -%}
   {%- for slug in t.speakers -%}
     {%- assign p = site.data.people[slug] -%}
     {%- if p -%}
-      {%- if p.url and mode != 'archive' %}<a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.name }}</a>
+      {%- if p.url %}<a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.name }}</a>
       {%- else %}{{ p.name }}{%- endif -%}
       {%- assign affil = p.talk_affiliation | default: p.affiliation -%}
       {%- assign show_affil = false -%}
