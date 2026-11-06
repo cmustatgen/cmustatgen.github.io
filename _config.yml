@@ -9,7 +9,7 @@ baseurl:     ""
 # Public Google Calendar for the meetings. The calendar ID is the address
 # shown under "Integrate calendar" in Google Calendar settings, e.g.
 # "abc123@group.calendar.google.com". Leave empty to hide the button.
-google_calendar_id: ""
+google_calendar_id: "c_665177a3800956737f56164802463112d84fdfd2af175e38b9e22aec6142c87d@group.calendar.google.com"
 
 source:      .
 destination: ./_site
