@@ -115,6 +115,7 @@
     framework for interpreting single-cell datasets by linking cellular states to their
     underlying perturbations.
   paper_url: https://www.sciencedirect.com/science/article/pii/S0092867426011190
+  skip_up_next: true               # talk given; Up next moves to the following meeting
 - date: '2026-11-20'
   speakers: [gonzalo_mena]
   title: TBD
