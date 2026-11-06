@@ -16,6 +16,27 @@
 #     kind: no_meeting
 #     label: Fall Break
 
+- date: '2026-09-11'
+  speakers: [alice_zhang]
+  title: Contrastive Probabilistic CCA for Multi-Omics Data Analysis
+  abstract: >-
+    High-dimensional multi-view data often contain both shared and view-specific sources of
+    variation, making it challenging to identify relationships that are specific to a condition of
+    interest. Canonical correlation analysis (CCA) provides a framework for identifying
+    low-dimensional representations that capture shared variations between two sets of measurements
+    collected from the same samples. In contrastive analysis, data from a condition of interest
+    (foreground) are analyzed alongside background samples to identify sources of variation specific
+    to the foreground condition. However, when foreground data is analyzed with background samples,
+    standard CCA does not separate shared variation that is present across conditions from
+    cross-modal variation that is specific to the foreground.
+    We propose a probabilistic contrastive extension of CCA (pcCCA) that uses these background and
+    foreground samples to distinguish shared variation from cross-modal contrastive variation
+    specific to the foreground. The model represents these sources of variation through
+    low-dimensional latent variables, providing a probabilistic framework for their estimation. We
+    motivate this framework using paired gene expression and protein abundance data and evaluate its
+    ability to recover the underlying latent structure through simulation studies. The proposed
+    pcCCA framework provides an approach for identifying cross-modal relationships specific to a
+    condition while accounting for shared structure present in the background population.
 - date: '2026-09-25'
   speakers: [lorenzo_testa]
   title: Accurate prediction in reconstructed spatial transcriptomes does not ensure valid biological discovery
