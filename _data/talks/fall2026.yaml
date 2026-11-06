@@ -16,4 +16,22 @@
 #     kind: no_meeting
 #     label: Fall Break
 
-[]
+- date: '2026-11-06'
+  speakers: [annaelaine_rosengart]
+  title: Mapping transcriptional responses to cellular perturbations with RNA fingerprinting
+  abstract: >-
+    Single-cell perturbation dictionaries measure how cells respond to genetic and chemical
+    perturbations, creating the opportunity to assign causal interpretations to observational
+    data. We introduce RNA fingerprinting, a statistical framework that maps transcriptional
+    responses from new experiments onto reference perturbation dictionaries. RNA fingerprinting
+    learns perturbation representations, or "fingerprints," from single-cell data, then
+    probabilistically assigns query cells to one or more candidate perturbations. We benchmark
+    on ground-truth datasets, demonstrating accurate assignments at single-cell resolution,
+    scalability to genome-wide screens, and the ability to resolve combinatorial perturbations.
+    We demonstrate broad utility across diverse biological settings: identifying context-specific
+    regulators of p53 under ribosomal stress, characterizing dose-dependent drug mechanisms of
+    action, and uncovering cytokine-driven B cell heterogeneity during secondary influenza
+    infection in vivo. Together, these results establish RNA fingerprinting as a versatile
+    framework for interpreting single-cell datasets by linking cellular states to their
+    underlying perturbations.
+  paper_url: https://www.sciencedirect.com/science/article/pii/S0092867426011190
