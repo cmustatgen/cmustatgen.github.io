@@ -1,0 +1,11 @@
+# Ordered newest-first. This order drives the homepage (first entry) and the
+# archive (every entry whose status is neither `upcoming` nor `current`).
+# `key` matches _data/talks/<key>.yaml.
+
+- key: fall2026
+  name: Fall 2026
+  status: upcoming
+  # default_weekday: Tuesday
+  # default_room: BH 232M
+  # default_time: 12-1pm
+  # note: 'Time & location TBD'

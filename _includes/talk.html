@@ -1,0 +1,110 @@
+{%- comment -%}
+  include.talk  entry from _data/talks/<term>.yaml
+  include.term  matching entry from _data/terms.yaml, for room/time defaults
+  include.mode  'schedule' (default) shows room, time and links;
+                'archive' shows date, title and speaker only
+{%- endcomment -%}
+
+{%- assign t = include.talk -%}
+{%- assign term = include.term -%}
+{%- assign mode = include.mode | default: 'schedule' -%}
+{%- assign kind = t.kind | default: 'talk' -%}
+{%- assign date_fmt = '%-d %b' -%}
+{%- if mode == 'archive' -%}{%- assign date_fmt = '%-d %b %Y' -%}{%- endif -%}
+
+{%- comment -%} "TBD" is a placeholder in the sign-up sheet, not content: an
+  abstract whose whole body is TBD is treated as absent, so no Abstract badge
+  opens onto the word "TBD", and a "Title TBD" is said once, in the same voice
+  as the speaker placeholder. Normalised here rather than in _data/talks/*.yaml,
+  which scripts/migrate/merge.py regenerates. Locals are prefixed because Jekyll
+  includes share the caller's scope. {%- endcomment -%}
+{%- assign talk_abstract = t.abstract | strip -%}
+{%- if talk_abstract == 'TBD' or talk_abstract == 'tbd' or talk_abstract == '' %}{% assign talk_abstract = nil %}{% endif -%}
+{%- assign talk_title = t.title | strip -%}
+{%- assign talk_title_tbd = false -%}
+{%- if talk_title == '' or talk_title == 'TBD' or talk_title == 'Title TBD' %}{% assign talk_title_tbd = true %}{% endif -%}
+
+{%- comment -%} The one talk that is next, marked in place. Never in archive
+  mode, which passes no next_date. {%- endcomment -%}
+{%- assign is_next = false -%}
+{%- if include.next_date and t.date == include.next_date %}{% assign is_next = true %}{% endif -%}
+
+{%- comment -%} Archive bylines are plain text; live ones stay linked. {%- endcomment -%}
+{%- capture byline -%}
+  {%- for slug in t.speakers -%}
+    {%- assign p = site.data.people[slug] -%}
+    {%- if p -%}
+      {%- if p.url and mode != 'archive' %}<a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.name }}</a>
+      {%- else %}{{ p.name }}{%- endif -%}
+      {%- assign affil = p.talk_affiliation | default: p.affiliation -%}
+      {%- assign show_affil = false -%}
+      {%- if p.roster == nil and p.affiliation %}{% assign show_affil = true %}{% endif -%}
+      {%- if mode != 'archive' and term.show_speaker_affiliations and affil %}{% assign show_affil = true %}{% endif -%}
+      {%- if show_affil %} <span class="talk-affil">({{ affil }})</span>{%- endif -%}
+    {%- else -%}{{ slug }}{%- endif -%}
+    {%- unless forloop.last %}, {% endunless -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- comment -%} Haystack for the archive filter. {%- endcomment -%}
+{%- capture haystack -%}{{ t.title }} {{ byline | strip_html }} {{ t.date }} {{ term.name }}{%- endcapture -%}
+
+{%- comment -%} A `tbd` slot is a meeting without a speaker, not a break. {%- endcomment -%}
+{%- assign is_break = false -%}
+{%- if kind == 'no_meeting' or kind == 'cancelled' %}{% assign is_break = true %}{% endif -%}
+
+<div class="talk{% if kind != 'talk' %} talk-{{ kind }}{% endif %}{% if is_break %} is-break{% endif %}{% if talk_title_tbd and kind == 'talk' %} is-untitled{% endif %}{% if is_next %} is-next{% endif %}{% if mode == 'archive' %} is-archive{% endif %}"
+     {% if kind == 'talk' %}data-search="{{ haystack | strip_newlines | downcase | escape_once }}"{% endif %}
+     {% if t.date %}id="t-{{ t.date }}{% if t.speakers.first %}-{{ t.speakers.first }}{% endif %}"{% endif %}>
+  <div class="talk-date">{{ t.date | date: date_fmt }}</div>
+  <div class="talk-body">
+
+    {%- if kind == 'talk' -%}
+      {%- if is_next %}<div class="next-label">Up next</div>{% endif -%}
+      <span class="talk-title{% unless talk_abstract %} is-static{% endunless %}">{% if talk_title_tbd %}Title to be announced{% else %}{{ talk_title }}{% endif %}</span>
+      {%- comment -%} Who gave it and where the work lives, in one line, because
+        they are the same kind of fact. The paper is not a second control beside
+        the title -- it is an outbound link, so it sits with the only other
+        outbound link in the row, in the same colour, one line under the one
+        thing in the row that acts in place. Emitted in archive mode too:
+        `archive` means the meeting is over, so room, time and the speaker's
+        homepage go -- those are logistics and identity -- but a paper is the
+        talk's content and the only part of a 2011 row that still has any use.
+        The old `mode != 'archive'` guard suppressed 55 of the 57 paper_urls in
+        _data/talks, 52 of them on rows with no abstract, which rendered a title
+        that does not open and nothing at all to click. Kept OUT of the `byline`
+        capture above on purpose: that capture feeds `haystack`, and "Paper" in
+        the search index would make the query `paper` mean two things. The
+        non-breaking spaces are what keep the middot from ever starting or
+        ending a line at 320px. {%- endcomment -%}
+      {%- if byline != blank or t.paper_url -%}
+        <div class="talk-byline">{{ byline }}{% if t.paper_url %}{% if byline != blank %}&nbsp;<span class="talk-sep" aria-hidden="true">&middot;</span>&nbsp;{% endif %}<a class="talk-source" href="{{ t.paper_url }}" target="_blank" rel="noopener">Paper</a>{% endif %}</div>
+      {%- endif -%}
+
+      {%- comment -%} Scheduling detail only matters while a talk is upcoming. {%- endcomment -%}
+      {%- if mode != 'archive' -%}
+        {%- assign room = t.room | default: nil -%}
+        {%- assign time = t.time | default: nil -%}
+        {%- if room and room != term.default_room or time and time != term.default_time or t.weekday_override -%}
+          <div class="talk-where">
+            {%- if t.weekday_override %}{{ t.weekday_override }}{% if room or time %}, {% endif %}{% endif -%}
+            {%- if time %}{{ time }}{% if room %}, {% endif %}{% endif -%}
+            {%- if room %}{{ room }}{% endif -%}
+          </div>
+        {%- endif -%}
+        {%- if t.note %}<div class="talk-note">{{ t.note }}</div>{% endif -%}
+        {%- if t.date_note %}<div class="talk-note">{{ t.date_note }}</div>{% endif -%}
+      {%- endif -%}
+
+      {%- if talk_abstract %}<div class="talk-abstract">{{ talk_abstract }}</div>{% endif -%}
+
+    {%- elsif kind == 'tbd' -%}
+      <span class="talk-title is-static">Speaker to be confirmed</span>
+      {%- if mode != 'archive' and t.note %}<div class="talk-note">{{ t.note }}</div>{% endif -%}
+
+    {%- else -%}
+      <span class="talk-title is-static">{{ t.label | default: 'No meeting' }}</span>
+    {%- endif -%}
+
+  </div>
+</div>

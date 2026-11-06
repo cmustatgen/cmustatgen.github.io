@@ -1,0 +1,798 @@
+/* CMU Statistical Genomics. Stylesheet inherited from statml-reading-group.github.io.
+   Structure, section rhythm, navbar and theme mechanics follow
+   ericchen28.github.io. Restraint over decoration: the page is neutral --
+   even links and the nav underline -- and two earth pigments do all the
+   marking, one tense each. Ochre is the present: the running term and the
+   next talk. It is not an imported hue; it is the ivory ground and the warm
+   hairlines (37-48 degrees) taken to ink. Rouge is the record: the wordmark,
+   a life remembered, a search hit. Index carries ochre twice and rouge once;
+   archive and people carry rouge twice and ochre never. Neither is ever
+   decoration, and neither is a UI state. Type comes from --fs-*. */
+
+/* ================ Theme variables ================ */
+:root {
+  color-scheme: light;
+
+  /* surfaces: ivory rather than #fff */
+  --bg: #fdfdfb;
+  --bg-elev: #ffffff;
+  --bg-sunk: #f7f6f2;
+  --nav-bg: #fdfdfb;
+  --nav-bg-docked: rgba(253, 253, 251, 0.88);
+
+  /* ---- text ramp */
+  --text-strong: #14161c;
+  --text: #22252c;
+  --text-mid: #333740;
+  --text-soft: #555a63;
+  --text-muted: #6f747c;   /* 4.61:1 on paper -- AA at 13px */
+  --text-faint: #8d939c;   /* decorative only */
+
+  /* ---- lines & borders */
+  --hairline: #ebe9e4;
+  --hairline-strong: #ded9d1;
+  --border-mid: #bcb8ae;
+
+  /* ---- accents. Two earths. Rouge is the permanent record; ochre is the
+     present tense. Ochre is not an import: hue 41.6 is --border-mid's own
+     hue (42.9) and sits inside the 37-48 band every neutral here occupies
+     (--hairline 43, --hairline-strong 37, --bg-sunk 48). It is this page's
+     paper taken to ink -- 67% saturation against their 10-17%, which is why
+     a 2px rail among beige rails reads as a mark and not as a darker rule. */
+  --rouge: #8c2731;
+  --rouge-wash: rgba(140, 39, 49, 0.07);
+
+  --ochre: #7a5c18;           /* 6.12:1 on paper; 4.43:1 against the rails it sits among */
+
+  --link: #4f668d;            /* blue, well under the chroma of a default web link */
+  --link-hover: #334c71;
+
+  --shadow-soft: rgba(20, 22, 28, 0.05);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #14161a;
+  --bg-elev: #1d2026;
+  --bg-sunk: #191c21;
+  --nav-bg: #14161a;
+  --nav-bg-docked: rgba(20, 22, 26, 0.85);
+
+  --text-strong: #f2f3f5;
+  --text: #d7d9dd;
+  --text-mid: #c4c7cc;
+  --text-soft: #a3a7ad;
+  --text-muted: #7d828a;
+  --text-faint: #62666d;
+
+  --hairline: rgba(255, 255, 255, 0.09);
+  --hairline-strong: rgba(255, 255, 255, 0.17);
+  --border-mid: rgba(255, 255, 255, 0.28);
+
+  /* lifted: the light values sit near 2:1 on #14161a */
+  --rouge: #e4868d;
+  --rouge-wash: rgba(228, 134, 141, 0.12);
+
+  --ochre: #cfa661;           /* 8.00:1; hue held, lightness lifted, as rouge does */
+
+  --link: #a3b9e4;
+  --link-hover: #c2d8ff;
+
+  --shadow-soft: rgba(0, 0, 0, 0.35);
+}
+
+/* ================ Type scale ================
+   Root is 62.5%, so 1rem = 10px. Every font-size comes from here. */
+:root {
+  --fs-micro: 1.1rem;   /* badges, counts                    */
+  --fs-label: 1.2rem;   /* uppercase micro-labels, nav        */
+  --fs-meta:  1.3rem;   /* dates, affiliations, footer        */
+  --fs-small: 1.4rem;   /* bylines, name lists                */
+  --fs-body:  1.5rem;   /* body copy                          */
+  --fs-lead:  1.7rem;   /* lede, semester names, affiliation  */
+  --fs-head:  2.6rem;   /* h4 -- the only heading on the site */
+  --fs-disp:  3.4rem;   /* wordmark                           */
+  --fs-disp-lg: 4.2rem; /* wordmark, >=550px                  */
+  --fs-disp-sm: 2.6rem; /* wordmark, small screens            */
+  --fs-icon:  1.6rem;   /* icon buttons                       */
+
+  --tracking-label: .2rem;   /* uppercase micro-labels */
+  --tracking-head:  .1rem;   /* section headings       */
+
+  /* Reading measure. The container is 1140px; text set across all of it runs
+     past 110 characters a line, and an open abstract runs past 150. */
+  --measure: 64rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--fs-body);
+}
+
+/* Positive tracking, overriding Skeleton's negative. Weight too: Skeleton's
+   300 left the largest text on the page also the thinnest, so a 600-weight
+   meta line beside it read as the heavier of the two. */
+h4 {
+  font-size: var(--fs-head);
+  font-weight: 400;
+  letter-spacing: var(--tracking-head);
+  color: var(--text-strong);
+}
+
+.container { max-width: 1140px; }
+
+a { color: inherit; }
+a:hover { color: inherit; }
+
+/* Colour marks the link; the underline is the hover state. The blue sits far
+   enough from the ink to register at a glance (dE ~29) while staying deep
+   enough not to protrude -- a link lighter than its surrounding text reads
+   as disabled, which is what the earlier grey did.
+   `.abstract a` used to be in this list and matched nothing: no element on
+   this site carries class "abstract" -- the class is talk-abstract -- so the
+   44 anchors inside archived abstracts fell through to `a { color: inherit }`
+   and were indistinguishable from the prose around them.
+   The paper link used to be listed here separately so it would match the
+   speaker's name two lines up. It now sits ON that line, inside .talk-byline,
+   so `.talk-byline a` already catches it and the extra selector is gone: the
+   sameness this comment asked for is structural rather than declared twice. */
+.text-link, .prose a, .person-name a, .footer a, .talk-abstract a, .talk-byline a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+.text-link:hover, .prose a:hover, .person-name a:hover,
+.footer a:hover, .talk-abstract a:hover, .talk-byline a:hover {
+  color: var(--link-hover);
+  text-decoration-color: currentColor;
+}
+
+/* ================ Header ================ */
+.header { margin-top: 40px; margin-bottom: 30px; text-align: center; }
+@media (min-width: 550px) { .header { margin-top: 5rem; } }
+
+.wordmark { display: block; text-decoration: none; }
+.wordmark-main {
+  display: block;
+  font-size: var(--fs-disp);
+  font-weight: 300;
+  letter-spacing: .08rem;
+  line-height: 1.12;
+  color: var(--text-strong);
+}
+.wordmark-sub {
+  display: block;
+  margin-top: 8px;
+  text-transform: uppercase;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: .3rem;
+  color: var(--text-muted);
+}
+@media (min-width: 550px) { .wordmark-main { font-size: var(--fs-disp-lg); } }
+
+/* A quiet mark, not a flag. */
+.wordmark-rule {
+  display: flex; justify-content: center; gap: 0;
+  margin: 16px auto 0; width: 48px; height: 2px;
+}
+.wordmark-rule span { flex: 1; }
+.wordmark-rule span:nth-child(1) { background: var(--text-mid); }
+.wordmark-rule span:nth-child(2) { background: var(--hairline-strong); }
+.wordmark-rule span:nth-child(3) { background: var(--rouge); }
+
+.header-affil {
+  margin-top: 16px;
+  margin-bottom: 0;
+  font-size: var(--fs-lead);
+  letter-spacing: .02rem;
+  color: var(--text-mid);
+}
+.header-affil a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease;
+}
+.header-affil a:hover { text-decoration-color: var(--text-faint); }
+
+/* ================ Sections ================ */
+.docs-section {
+  border-top: 1px solid var(--hairline);
+  padding: 3.4rem 0;
+  margin-bottom: 0;
+}
+/* A section whose body is one sentence does not need a fourteen-row section's
+   band of air. Opt-in, so nothing moves without being told to. */
+.docs-section.is-brief { padding: 2.6rem 0; }
+
+/* Heading rule. Neutral by default; ochre marks the running term -- the same
+   claim as "Up next", at term scale rather than week scale. */
+.docs-section > h4,
+.section-header-row h4 {
+  position: relative;
+  padding-top: 12px;
+  margin-bottom: 1.4rem;
+}
+.docs-section > h4:before,
+.section-header-row h4:before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 26px; height: 2px;
+  background: var(--text-mid);
+  transition: width 0.3s ease;
+}
+.docs-section > h4.is-current:before,
+.section-header-row h4.is-current:before { background: var(--ochre); }
+
+/* Newest semester, distinguished from the thirty behind it -- and NOT with an
+   accent. archive.html skips status 'current' and 'upcoming', so this section
+   is always the newest COMPLETED term, never the running one; the present-tense
+   pigment would say the opposite of the truth here, and rouge would put a
+   second accent on a page that already carries the wordmark and search hits.
+   The name is already --text-strong, so the rule only has to out-weigh the
+   --hairline under the thirty terms below it: --border-mid is 1.94:1 light and
+   2.51:1 dark against their 1.19:1 / 1.28:1. */
+.term-section:first-of-type .term-name { color: var(--text-strong); }
+.term-section:first-of-type .term-header { border-bottom-color: var(--border-mid); }
+
+.section-header-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  flex-wrap: wrap; gap: 10px; margin-bottom: 1.6rem;
+}
+.section-header-row h4 { margin-bottom: 0; }
+
+/* Page copy runs the full container and reflows with it, rather than sitting
+   in a 640px column with the rest of the width left empty. The sections that
+   use .prose -- About, Joining, Organizers -- are one or two sentences each,
+   so the long line a measure normally guards against never accumulates over
+   enough lines to cost the reader their place. --measure is still applied to
+   .talk-abstract, which is the one block here that runs to paragraphs. */
+.prose { max-width: none; }
+.prose p { margin-bottom: 1.6rem; font-size: var(--fs-body); }
+.prose p:last-child { margin-bottom: 0; }
+/* One lede size. About had a size of its own, and it showed. */
+.lede {
+  font-size: var(--fs-lead); line-height: 1.65;
+  color: var(--text-mid);
+}
+
+/* ================ Nav ================ */
+.navbar { display: none; }
+
+/* nav.html emits .navbar-spacer, .navbar, .navbar-mobile and then the content,
+   so the first section's adjacent sibling is always .navbar-mobile -- at every
+   width, since that element is only display:none above 750px. The old
+   `.navbar + .docs-section` rule therefore never matched, and the first
+   section's border-top has been stacking against the nav's own border-bottom
+   as a 2px double line on every page. */
+.navbar-mobile + .docs-section { border-top-width: 0; }
+
+@media (min-width: 750px) {
+  .navbar, .navbar-spacer {
+    display: block; width: 100%; height: 5.2rem;
+    background: var(--nav-bg); z-index: 99;
+    border-top: none; border-bottom: 1px solid var(--hairline);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .navbar-spacer { display: none; }
+  .navbar > .container { width: 100%; }
+  .navbar-list { list-style: none; margin-bottom: 0; display: flex; align-items: center; gap: 42px; }
+  .navbar-item { position: relative; margin-bottom: 0; }
+  .navbar-link {
+    text-transform: uppercase;
+    font-size: var(--fs-small); font-weight: 600; letter-spacing: var(--tracking-label);
+    text-decoration: none; line-height: 5.2rem; color: var(--text-mid);
+    position: relative; transition: color 0.3s ease, opacity 0.3s ease;
+  }
+  .navbar-link:after {
+    content: ''; position: absolute; bottom: 50%; left: 0; width: 100%; height: 1.5px;
+    background: var(--text-strong);
+    transform: translateY(14px) scaleX(0); transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+  /* Hovering the list dims every link but the hovered one. */
+  .navbar-list:hover .navbar-link { opacity: 0.25; }
+  .navbar-list:hover .navbar-link:hover,
+  .navbar-list:hover .navbar-link.active { opacity: 1; }
+  .navbar-link:hover { color: var(--text-strong); }
+  .navbar-link:hover:after { transform: translateY(14px) scaleX(1); }
+  .navbar-link.active { color: var(--text-strong); }
+  .navbar-link.active:after { transform: translateY(14px) scaleX(1); }
+
+  .has-docked-nav .navbar {
+    position: fixed; top: 0; left: 0;
+    background: var(--nav-bg-docked);
+    -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+    box-shadow: 0 1px 4px var(--shadow-soft);
+  }
+  .has-docked-nav .navbar-spacer { display: block; }
+  .has-docked-nav .navbar > .container { width: 80%; }
+}
+
+.navbar-mobile {
+  display: flex; gap: 22px; justify-content: center; flex-wrap: wrap;
+  padding: 14px 0; border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+.navbar-mobile a {
+  text-transform: uppercase; font-size: var(--fs-label); font-weight: 600;
+  letter-spacing: .18rem; color: var(--text-soft); text-decoration: none;
+}
+.navbar-mobile a.active { color: var(--text-strong); }
+@media (min-width: 750px) { .navbar-mobile { display: none; } }
+
+html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 6.5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ================ Talk rows ================ */
+.term-section { margin-bottom: 3.4rem; }
+.term-section:last-child { margin-bottom: 0; }
+
+.term-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  flex-wrap: wrap; gap: 8px;
+  margin-bottom: 1.4rem; padding-bottom: 8px;
+  border-bottom: 1px solid var(--hairline);
+}
+.term-name {
+  font-size: var(--fs-lead); font-weight: 600;
+  color: var(--text-mid); letter-spacing: .04rem;
+}
+.term-meta { font-size: var(--fs-meta); color: var(--text-muted); font-variant-numeric: tabular-nums; }
+/* The standing rubric beside a section heading -- meeting time and room here,
+   talk counts on the archive. It inherits the base 13px, so it is filed with
+   every other date, room and affiliation on the site and can never out-mass
+   the heading it shares a baseline with. --text-mid at 500 rather than the
+   base muted, because the room and time is the one line a first-time visitor
+   actually needs. */
+.section-header-row .term-meta {
+  color: var(--text-mid);
+  font-weight: 500;
+  letter-spacing: .02rem;
+}
+/* A room exception is logistics, so it belongs at 13px with the rest of it.
+   The negative pull was silently compensating for the header row's 1.8rem
+   margin; at 1.6rem the note can sit on its own baseline. */
+.term-note {
+  color: var(--text-muted);
+  font-size: var(--fs-meta);
+  margin-top: 0;
+  margin-bottom: 1.6rem;
+}
+
+.talk-list { display: flex; flex-direction: column; gap: 6px; }
+
+/* The rhythm lives in the row, not in the gap. With the space inside the row
+   every 2px rail is at least a full line tall, so fourteen rails read as one
+   spine down the term instead of ticks of random length -- and the dotted
+   break rows finally register as breaks. Row-to-row pitch is 18px either way. */
+.talk {
+  display: flex; gap: 16px;
+  padding: 6px 0 6px 12px;
+  border-left: 2px solid var(--hairline-strong);
+  transition: border-left-color 0.2s ease;
+}
+.talk:hover { border-left-color: var(--text-muted); }
+.talk.open { border-left-color: var(--text-mid); }
+.talk.is-break { border-left-style: dotted; }
+.talk.is-break:hover { border-left-color: var(--hairline-strong); }
+
+/* Fixed width, not min-width: a floor lets any longer date widen its own cell,
+   which knocks that row's title out of line with the rest. */
+.talk-date {
+  color: var(--text-muted); font-size: var(--fs-meta); font-weight: 500;
+  width: 74px; flex-shrink: 0; padding-top: 1px;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+/* Archive dates carry a year ("30 May 2018"), so they need a wider column. */
+.talk.is-archive .talk-date { width: 80px; }
+.talk-body { min-width: 0; flex: 1; }
+
+.talk-title {
+  font-size: var(--fs-body);
+  font-weight: 600; color: var(--text); line-height: 1.4;
+  cursor: pointer; display: block;
+  transition: color 0.2s ease;
+}
+.talk-title.is-static { cursor: default; }
+
+/* A title that opens something is the row's one control, so it has to be the
+   size and the shape of one. width, because .talk-title is a block inside a
+   flex-filled body: the click box ran the full width of the row, so the empty
+   column to the right of a short title toggled it, and a title that darkens
+   under the cursor was promising a target that was mostly not there. fit-content
+   shrinks the box to the words -- and only to the words, since it still yields
+   to the available width and wraps, so the 84 long titles are unaffected. It
+   stays a block, so no line-box strut and no baseline alignment is involved and
+   nothing moves. padding-block, because 15px at 1.4 is a 21px line, and removing
+   the Abstract pill left that line as the row's only pointer target -- under the
+   24px of WCAG 2.2 SC 2.5.8, and not covered by its inline exception, which
+   wants a target sitting in a sentence. The pill this replaced was built to
+   26.2px on purpose; this puts the number back at 25px. The negative margin
+   cancels the padding exactly, so not one baseline in 354 rows moves:
+   .talk-body is a flex item and therefore a formatting-context root, which is
+   what stops the -2px collapsing out through it, and against .talk-byline's
+   +2px and .next-label's 3px the collapsed result is unchanged either way. A
+   static title is text: it needs neither. */
+.talk-title:not(.is-static) {
+  width: fit-content; max-width: 100%;
+  padding-block: 2px; margin-block: -2px;
+}
+.talk:hover .talk-title:not(.is-static) { color: var(--text-strong); }
+
+/* Only on titles that open: inline-block, so on a wrapping title it would
+   otherwise land on its own line as a blank row. Present at rest rather than
+   on hover: a hover-only affordance is no affordance on a touch screen, and
+   on /archive/ the title is still the only way into an abstract -- the byline
+   there carries a paper when there is one, but never an abstract -- so sixteen
+   years of them were sitting behind a control that did not exist until you
+   moved a mouse over it. The three states are the ones it already had; only the
+   channel changes, from opacity (0, i.e. absent) to colour: --text-muted 4.62:1
+   at rest, --text-mid under the cursor, --text-strong and turned when open. */
+.talk-title:not(.is-static):after {
+  content: '\203A';
+  font-size: var(--fs-body); font-weight: 300; color: var(--text-muted);
+  margin-left: 6px; display: inline-block;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.talk:hover .talk-title:not(.is-static):after { color: var(--text-mid); }
+.talk.open .talk-title:not(.is-static):after {
+  color: var(--text-strong); transform: rotate(90deg);
+}
+
+.talk-byline { color: var(--text-soft); font-size: var(--fs-small); margin-top: 2px; }
+.talk-affil { color: var(--text-muted); }
+.talk-where { color: var(--text-muted); font-size: var(--fs-meta); margin-top: 2px; }
+.talk-note { color: var(--text-muted); font-size: var(--fs-meta); font-style: italic; }
+
+/* visibility, not just max-height. max-height:0 with overflow:hidden hides the
+   panel from the eye and from nothing else: closed abstracts stayed in the
+   accessibility tree and in the tab order, so on /archive/ a screen reader read
+   all 235 of them -- 231,322 characters -- as body text, while every title above
+   them announced aria-expanded="false", and Tab walked into the 45 anchors that
+   32 of those abstracts contain with nothing visible on screen. This is the one
+   place where the careful aria wiring in site.js and this file flatly contradict
+   each other, and the CSS was winning. visibility is the only hiding mechanism
+   that is inherited, animatable, and removes the subtree from both. The 0.28s
+   delay holds the text painted for the length of the collapse so it does not
+   blank before the panel finishes closing; the open rule resets the delay for
+   all five properties, which the other four never had. Under reduced motion the
+   block below sets transition:none and it simply flips, which is correct. */
+.talk-abstract {
+  color: var(--text-soft); line-height: 1.65; font-size: var(--fs-small);
+  max-width: var(--measure);
+  max-height: 0; overflow: hidden; visibility: hidden;
+  border-left: 2px solid transparent;
+  transition: max-height 0.28s ease, margin 0.28s ease, padding 0.28s ease,
+              border-color 0.28s ease, visibility 0s linear 0.28s;
+  margin-top: 0;
+}
+/* What changed when it opened. The old rule was --hairline: 1.19:1 against the
+   page, which is not a faint rule but functionally not one at all. At 2px and
+   --text-faint (3.04:1 light, 3.14:1 dark) the indent reads as disclosed
+   material, and still sits a step under the row's own rail, which is --text-mid
+   at 11.71:1 while open. Indent plus rule is this page's existing quotation
+   language: no tint, no card, no shadow. */
+.talk.open .talk-abstract {
+  max-height: 260rem;
+  margin-top: 10px;
+  padding-left: 12px;
+  border-left-color: var(--text-faint);
+  /* Shown at once; the closed rule delays the flip to hidden by 0.28s so the
+     collapse animates before the panel leaves the a11y tree. Without this
+     override the base `visibility: hidden` is never lifted and the row opens
+     onto blank space. */
+  visibility: visible;
+  transition: max-height 0.28s ease, margin 0.28s ease, padding 0.28s ease,
+              border-color 0.28s ease, visibility 0s linear 0s;
+}
+
+/* The tail of the attribution line, and nothing more. No box, no size and no
+   colour of its own: --link, the underline-on-hover and the byline's 14px all
+   come from `.talk-byline a`, so the paper is not a lookalike of the speaker's
+   name two words to its left -- it is the same declaration. No vertical padding
+   either: this is a link sitting in a sentence, which is exactly the inline
+   exception to WCAG 2.2 SC 2.5.8, and padding it would make 57 byline lines
+   taller than their neighbours to satisfy a rule that does not apply to them.
+   The arrow is the one mark running text has no need for: you are leaving --
+   and since a paper and an abstract co-occur on 5 rows of 354, this arrow and
+   the title's chevron are almost never in the same row, which is how the row
+   says at a glance whether the substance is here or somewhere else. The middot
+   is the only genuinely decorative mark in the row, which is what --text-faint
+   is reserved for; it is aria-hidden, so it is punctuation for the eye only. */
+.talk-sep { color: var(--text-faint); }
+.talk-source:after {
+  content: '\2197'; margin-left: 3px; font-size: var(--fs-micro);
+}
+
+/* Two degrees of provisional. Placeholders recede by dropping a step and
+   losing their weight, not by fading toward --text-faint, which the ramp
+   marks decorative-only and which fails AA at these sizes. Their dates keep
+   full strength: pending slots should read as a term's cadence, not as holes. */
+.talk-tbd .talk-title,
+.talk-no_meeting .talk-title,
+.talk-cancelled .talk-title {
+  font-size: var(--fs-small); font-weight: 400; color: var(--text-muted);
+}
+.talk-no_meeting .talk-title,
+.talk-cancelled .talk-title { font-style: italic; }
+
+/* An unclaimed date is a date, not an event: hairline rail, and no hover
+   response, because there is nothing to open. */
+.talk-tbd { border-left-color: var(--hairline); }
+.talk-tbd:hover { border-left-color: var(--hairline); }
+
+/* Speaker confirmed, title pending: the weight shifts to the byline, which is
+   the part that is actually known. Normal rail, so this row stays a step
+   above an unclaimed one. */
+.talk.is-untitled .talk-title { color: var(--text-muted); font-weight: 400; }
+.talk.is-untitled .talk-byline { color: var(--text-mid); font-weight: 500; }
+
+/* "Up next" -- where ochre carries the most weight. Rouge did this and the
+   memorial both, which asked one pigment to mean "come on Thursday" and "a
+   life ended"; ochre takes the present tense and rouge keeps the record. It
+   also gets red out of a list that renders cancelled and no_meeting rows,
+   where red is the colour of the cancelled one and this is the one row that
+   is good news. Marked on the row itself; a callout above the list could only
+   repeat it. One rail and one eyebrow: no wash, no radius, and no extra
+   padding to knock this row's date out of the 74px date column. The rail keeps
+   full strength through :hover and .open -- that is identity, not feedback;
+   feedback is the caret. */
+.talk.is-next { border-left-color: var(--ochre); }
+.talk.is-next:hover,
+.talk.is-next.open { border-left-color: var(--ochre); }
+.talk.is-next .talk-date { color: var(--text-mid); }
+.next-label {
+  display: block; margin-bottom: 3px;
+  text-transform: uppercase; font-size: var(--fs-micro); font-weight: 600;
+  letter-spacing: var(--tracking-label); color: var(--ochre);
+}
+
+/* The file's reduced-motion coverage is scroll-behavior (above) and the view
+   transition (below); the 280ms panel and both carets ran regardless. With
+   transition:none every state still applies, instantly and correctly. */
+@media (prefers-reduced-motion: reduce) {
+  .talk,
+  .talk-abstract,
+  .talk-title:not(.is-static):after { transition: none; }
+}
+
+/* The only button on the site. */
+.btn-quiet {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 18px;
+  border: 1px solid var(--hairline-strong); border-radius: 3px;
+  text-transform: uppercase; font-size: var(--fs-label); font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  color: var(--text-mid); text-decoration: none; background: transparent;
+  transition: border-color .22s ease, color .22s ease, background .22s ease;
+}
+.btn-quiet:after {
+  content: '\2192'; font-size: var(--fs-small); letter-spacing: 0;
+  transition: transform .22s ease;
+}
+.btn-quiet:hover {
+  border-color: var(--text-muted); color: var(--text-strong); background: var(--bg-sunk);
+}
+.btn-quiet:hover:after { transform: translateX(3px); }
+
+/* ================ Archive controls ================ */
+.archive-controls {
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  margin-bottom: 2.2rem;
+}
+.archive-search {
+  flex: 1 1 260px; min-width: 0;
+  height: 38px; padding: 0 12px;
+  font-family: inherit; font-size: var(--fs-small);
+}
+.archive-count {
+  font-size: var(--fs-meta); color: var(--text-muted); white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.term-jump { font-size: var(--fs-meta); height: 38px; padding: 0 8px; }
+.is-hidden { display: none !important; }
+.archive-empty { color: var(--text-muted); font-style: italic; }
+
+mark {
+  background: transparent;
+  color: var(--rouge);
+  font-weight: 600;
+  padding: 0;
+}
+
+/* ================ People ================ */
+/* Sort control. The active pill takes its text colour from --bg so it stays
+   readable in both themes: ink is near-black on paper and near-white on the
+   dark page. Filled ink rather than filled rouge -- a solid pill is the
+   heaviest mark on this page, and it was out-massing by an order of magnitude
+   the 11px rouge "in memoriam" it shares the page with. A UI selection state
+   is not an accent. */
+.sort-controls {
+  margin: 1.8rem 0 2.4rem;
+  padding: 16px 18px;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  background: var(--bg-elev);
+}
+.sort-label {
+  display: block; margin-bottom: 10px;
+  font-size: var(--fs-small); font-weight: 600; color: var(--text-mid);
+}
+.sort-options { display: flex; gap: 10px; flex-wrap: wrap; }
+.sort-option {
+  font-family: inherit; font-size: var(--fs-small); font-weight: 500;
+  height: 34px; padding: 0 16px;
+  border: 1px solid var(--border-mid); border-radius: 999px;
+  background: transparent; color: var(--text-mid);
+  cursor: pointer; white-space: nowrap;
+  /* Skeleton styles every button uppercase, tracked out and 38px-tall. */
+  text-transform: none; letter-spacing: normal; line-height: 32px;
+  margin-bottom: 0;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.sort-option:before { content: '+'; margin-right: 6px; }
+.sort-option:hover { border-color: var(--text-muted); color: var(--text-strong); }
+.sort-option.is-active {
+  background: var(--text-strong); border-color: var(--text-strong); color: var(--bg);
+}
+.sort-option.is-active:before { content: '\2713'; }
+/* No max-width: the note runs the full width of the panel and wraps only
+   when the viewport actually forces it. */
+.sort-note {
+  margin: 12px 0 0;
+  font-size: var(--fs-meta); color: var(--text-muted); line-height: 1.5;
+}
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+  gap: 30px 22px;
+  margin-top: 1.8rem;
+}
+.person { text-align: center; min-width: 0; }
+.person-photo {
+  width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
+  object-position: 50% 25%;   /* sources are 4:5; bias up for faces */
+  border-radius: 3px; display: block;
+  background: var(--bg-sunk);
+}
+
+.person-name {
+  display: block; margin-top: 10px;
+  font-size: var(--fs-small); font-weight: 600; line-height: 1.3; color: var(--text);
+}
+.person-role { font-size: var(--fs-meta); color: var(--text-muted); line-height: 1.35; margin-top: 2px; }
+.person-affil { font-size: var(--fs-meta); color: var(--text-faint); line-height: 1.35; }
+.person.is-memorial .person-name:after,
+.person-row.is-memorial .person-name:after {
+  content: 'in memoriam';
+  display: block; font-size: var(--fs-micro); font-weight: 500; font-style: italic;
+  text-transform: uppercase; letter-spacing: .1rem; color: var(--rouge);
+  margin-top: 2px;
+}
+
+.people-group { margin-bottom: 3.4rem; }
+.people-group:last-child { margin-bottom: 0; }
+.people-group-title {
+  display: flex; align-items: baseline; gap: 10px;
+  text-transform: uppercase; font-size: var(--fs-label); font-weight: 600;
+  letter-spacing: var(--tracking-label); color: var(--text-mid);
+  padding-bottom: 8px; border-bottom: 1px solid var(--hairline);
+}
+.people-count {
+  font-size: var(--fs-micro); font-weight: 600; letter-spacing: .08rem;
+  color: var(--text-muted); background: var(--bg-sunk);
+  padding: 1px 6px; border-radius: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Postdocs, students, alumni. Multi-column so 60+ alumni read as a roster. */
+.people-list {
+  list-style: none; margin: 1.6rem 0 0; padding: 0;
+  columns: 2; column-gap: 32px;
+}
+@media (min-width: 750px) { .people-list { columns: 3; } }
+.person-row {
+  break-inside: avoid; -webkit-column-break-inside: avoid;
+  margin-bottom: 11px; line-height: 1.35;
+}
+.person-row .person-name { display: block; margin-top: 0; font-size: var(--fs-small); }
+.person-row .person-affil { font-size: var(--fs-meta); }
+
+/* ================ Footer ================ */
+.footer {
+  text-align: center; color: var(--text-muted);
+  border-top: 1px solid var(--hairline);
+  padding: 24px 0 40px; margin-bottom: 0; font-size: var(--fs-meta);
+}
+.footer-history {
+  max-width: 54rem; margin: 0 auto;
+  font-size: var(--fs-meta); color: var(--text-muted); line-height: 1.55;
+}
+
+/* ================ Theme toggle ================ */
+.theme-toggle {
+  background: none; border: none; padding: 0; margin: 0; height: auto;
+  line-height: 1; letter-spacing: normal; color: inherit; font-size: var(--fs-icon); cursor: pointer;
+}
+.theme-toggle .icon-sun { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
+html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+.theme-toggle-floating {
+  position: fixed; top: 16px; right: 20px; z-index: 200;
+  font-size: var(--fs-lead); color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+.theme-toggle-floating:hover { color: var(--text-strong); }
+
+/* Dissolve the old frame as one unit (View Transitions). */
+::view-transition-new(root) { animation: none; }
+::view-transition-old(root) { animation-duration: 0.3s; animation-timing-function: ease; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root) { animation: none; }
+}
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after { transition: none !important; }
+
+/* ================ Skeleton repairs ================
+   Skeleton hardcodes light greys here, so they break in dark mode -- most
+   visibly the search box. Overridden rather than edited into skeleton.css,
+   which stays a clean upstream copy. */
+input[type="text"], input[type="search"], input[type="email"],
+input[type="number"], textarea, select {
+  background-color: var(--bg-elev);
+  border: 1px solid var(--hairline-strong);
+  color: var(--text);
+  border-radius: 3px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+input[type="text"]:focus, input[type="search"]:focus, textarea:focus, select:focus {
+  border-color: var(--text-muted);
+  box-shadow: 0 0 0 3px var(--bg-sunk);
+  outline: 0;
+}
+input::placeholder { color: var(--text-faint); }
+
+code, pre > code {
+  background: var(--bg-sunk);
+  border: 1px solid var(--hairline-strong);
+  color: var(--text);
+}
+th, td { border-bottom: 1px solid var(--hairline); }
+hr { border-top: 1px solid var(--hairline); }
+
+.button, button { color: var(--text-soft); border-color: var(--border-mid); }
+.button:hover, button:hover, .button:focus, button:focus {
+  color: var(--text-strong); border-color: var(--text-muted);
+}
+
+/* Skeleton styles focus on inputs only. Neutral on purpose: a focus ring is
+   the browser's mark, not one of the site's two accents. Tabbing the schedule
+   used to outline every row in the exact colour that means "this is the next
+   one" -- and since the title is the keyboard handle for the disclosure, the
+   focused row now reads as focused rather than as accented. */
+a:focus-visible, button:focus-visible, .talk-title:focus-visible {
+  outline: 2px solid var(--text-strong);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+/* ================ Small screens ================ */
+@media (max-width: 549px) {
+  .talk { gap: 10px; }
+  .talk-date { width: 58px; font-size: var(--fs-micro); }
+  .talk.is-archive .talk-date { width: 68px; }
+  .people-grid { grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 22px 16px; }
+  .wordmark-main { font-size: var(--fs-disp-sm); }
+  .people-list { columns: 1; }
+}

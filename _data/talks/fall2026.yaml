@@ -1,0 +1,19 @@
+# Fall 2026 -- one entry per meeting, in date order.
+#
+#   - date: '2026-09-08'
+#     speakers: [jane_doe]          # slugs from people.yaml
+#     title: Some talk title
+#     abstract: >-
+#       Optional abstract.
+#     paper_url: https://...        # optional
+#     room: BH 232M                 # only if it differs from the term default
+#     time: 12-1pm                  # only if it differs from the term default
+#
+#   - date: '2026-09-15'
+#     kind: tbd                     # speaker to be confirmed
+#
+#   - date: '2026-10-13'
+#     kind: no_meeting
+#     label: Fall Break
+
+[]

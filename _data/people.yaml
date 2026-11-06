@@ -1,0 +1,17 @@
+# Every person the site names, keyed by slug.
+#   roster: present  -> group member, appears on /people/
+#   roster: absent   -> external speaker, appears only in talk bylines
+#
+# Fields: name (required), roster, position, affiliation, affiliation2,
+#         url, img (/assets/people/<file>, 320x400 recommended), sort_as
+#
+# Example:
+# jane_doe:
+#   name: Jane Doe
+#   roster: faculty
+#   position: Assistant Professor
+#   affiliation: Statistics & Data Science
+#   url: https://www.stat.cmu.edu/~jdoe/
+#   img: /assets/people/janeDoe.jpg
+
+{}

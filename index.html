@@ -1,0 +1,81 @@
+---
+layout: default
+title: Home
+---
+
+{%- assign term = site.data.terms | first -%}
+{%- assign talks = site.data.talks[term.key] -%}
+
+<div class="docs-section" id="about">
+  <h4>About</h4>
+  <div class="prose">
+    <p class="lede">
+      Welcome! We are a group of faculty, postdocs and PhD students at
+      Carnegie Mellon University working at the intersection of statistics, genetics and genomics.
+    </p>
+  </div>
+</div>
+
+<div class="docs-section" id="schedule">
+  <div class="section-header-row">
+    <h4 class="is-current">Schedule for {{ term.name }}</h4>
+    <span class="term-meta">
+      {%- if term.default_time or term.default_room -%}
+        {%- if term.default_weekday %}{{ term.default_weekday }}s, {% endif -%}
+        {{ term.default_time | default: 'time TBD' }}
+        &middot; {{ term.default_room | default: 'room TBD' }}
+      {%- else -%}
+        Time &amp; location TBD
+      {%- endif -%}
+    </span>
+  </div>
+
+  {%- if term.note -%}
+    <p class="term-note">{{ term.note }}</p>
+  {%- endif -%}
+
+  {%- comment -%} The next meeting we can announce: a real talk with a
+     confirmed speaker, titled or not, still ahead of us. {%- endcomment -%}
+  {%- assign today = site.time | date: '%Y-%m-%d' -%}
+  {%- assign next = nil -%}
+  {%- for t in talks -%}
+    {%- if next == nil and t.kind == nil and t.speakers and t.skip_up_next != true -%}
+      {%- assign d = t.date | date: '%Y-%m-%d' -%}
+      {%- if d >= today %}{% assign next = t %}{% endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign next_date = nil -%}
+  {%- if next %}{% assign next_date = next.date %}{% endif -%}
+
+  {%- assign scheduled = 0 -%}
+  {%- for t in talks -%}{%- if t.title %}{% assign scheduled = scheduled | plus: 1 %}{% endif -%}{%- endfor -%}
+
+  {%- if scheduled == 0 -%}
+    <p class="prose">
+      The {{ term.name }} schedule is being put together. Speakers will be
+      filled in as they are confirmed.
+    </p>
+  {%- endif -%}
+
+  <div class="talk-list">
+    {%- for t in talks -%}
+      {% include talk.html talk=t term=term next_date=next_date %}
+    {%- endfor -%}
+  </div>
+
+  <p style="margin-top: 2.6rem;">
+    <a class="btn-quiet" href="{{ '/archive/' | relative_url }}">Browse past talks</a>
+  </p>
+</div>
+
+<div class="docs-section is-brief" id="join">
+  <h4>Joining</h4>
+  <div class="prose">
+    <p>
+      Anyone at CMU is welcome to attend. To join the mailing list, to
+      volunteer to present, or to be added to the
+      <a class="text-link" href="{{ '/people/' | relative_url }}">people page</a>,
+      email one of the group members.
+    </p>
+  </div>
+</div>

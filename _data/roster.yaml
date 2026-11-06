@@ -1,0 +1,7 @@
+# Display order for /people/. Each entry is a slug from people.yaml.
+# Groups: faculty (with photos), postdoc, student, alumni.
+
+faculty: []
+postdoc: []
+student: []
+alumni: []
