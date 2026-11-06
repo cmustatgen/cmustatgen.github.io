@@ -63,7 +63,11 @@ title: Home
     {%- endfor -%}
   </div>
 
-  <p style="margin-top: 2.6rem;">
+  <p class="schedule-actions">
+    {%- if site.google_calendar_id != "" -%}
+    <a class="btn-quiet" href="https://calendar.google.com/calendar/render?cid={{ site.google_calendar_id | url_encode }}"
+       target="_blank" rel="noopener">Add to Google Calendar</a>
+    {%- endif -%}
     <a class="btn-quiet" href="{{ '/archive/' | relative_url }}">Browse past talks</a>
   </p>
 </div>

@@ -594,6 +594,9 @@ html { scroll-behavior: smooth; }
 }
 .btn-quiet:hover:after { transform: translateX(3px); }
 
+/* Buttons under the schedule: calendar subscription and the archive. */
+.schedule-actions { margin-top: 2.6rem; display: flex; flex-wrap: wrap; gap: 10px; }
+
 /* ================ Archive controls ================ */
 .archive-controls {
   display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
