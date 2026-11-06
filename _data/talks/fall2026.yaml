@@ -16,6 +16,30 @@
 #     kind: no_meeting
 #     label: Fall Break
 
+- date: '2026-10-09'
+  speakers: [ergan_shang]
+  title: Predicting Single-Cell Perturbation Responses in New Contexts with SCARF
+  abstract: >-
+    Predicting cellular responses to external interventions is fundamental for understanding gene
+    regulation and accelerating therapeutic discovery. While recent advances in single-cell
+    technologies have enabled large-scale profiling of perturbation effects, comprehensive
+    experimental exploration remains constrained by cost and feasibility. This limitation motivates
+    the development of computational approaches that can accurately infer responses to unmeasured
+    perturbations across diverse cell types and cell lines using related experimental data. We
+    propose SCARF, a deep generative framework that integrates optimal transport with
+    transformer-based representation learning for accurate and generalizable prediction of
+    single-cell perturbation responses. While transformer architectures were originally developed
+    for processing token embeddings in large language models (LLMs), we adapt them here to refine
+    cellular embeddings across varying perturbation conditions. Unlike many existing deep learning
+    approaches, SCARF does not rely solely on large-scale foundation models, which have been shown
+    to exhibit inconsistent performance in this setting. Instead, our framework leverages optimal
+    transport to capture distributional shifts between perturbations and across cell lines,
+    providing a principled mechanism for transferring perturbation effects. By combining
+    transport-based alignment with transformer-driven refinement, SCARF learns biologically
+    meaningful latent representations that generalize effectively to unseen cellular contexts.
+    Experiments on multiple benchmark datasets demonstrate that SCARF outperforms on most evaluated
+    metrics compared with existing methods in predicting gene expression responses under both
+    unseen perturbations and cell lines.
 - date: '2026-10-23'
   speakers: [julia_elrod]
   title: Benchmarking scRNA-seq normalization methods for accurate gene expression distribution recovery
