@@ -398,13 +398,13 @@ html { scroll-behavior: smooth; }
 
 /* Speaker headshot beside the row. Fixed box so every title starts at the
    same x whether or not the row has a speaker; a second speaker overlaps. */
-.talk-speakers { flex-shrink: 0; min-width: 40px; display: flex; align-items: flex-start; }
+.talk-speakers { flex-shrink: 0; min-width: 56px; display: flex; align-items: flex-start; }
 .talk-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
+  width: 56px; height: 56px; border-radius: 50%;
   object-fit: cover; object-position: 50% 30%; display: block;
   background: var(--bg-sunk); border: 1px solid var(--hairline);
 }
-.talk-avatar + .talk-avatar { margin-left: -12px; }
+.talk-avatar + .talk-avatar { margin-left: -18px; }
 
 .talk-title {
   font-size: var(--fs-body);
