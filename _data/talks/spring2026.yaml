@@ -27,3 +27,25 @@
     progression map. Together, these advances provide a richer and more data-driven framework for
     characterizing neurodegenerative dynamics across diverse molecular readouts.
   paper_url: https://www.biorxiv.org/content/10.64898/2026.05.27.728207v2
+- date: '2026-02-20'
+  speakers: [ziqi_liu]
+  title: Representation learning with blockwise missingness and signal heterogeneity
+  abstract: >-
+    Unified representation learning for multi-source data integration faces two important
+    challenges: blockwise missingness and blockwise signal heterogeneity. The former arises from
+    sources observing different, yet potentially overlapping, feature sets, while the latter
+    involves varying signal strengths across subject groups and feature sets. While existing
+    methods perform well with fully observed data or uniform signal strength, their performance
+    degenerates when these two challenges coincide, which is common in practice. To address this,
+    we propose Anchor Projected Principal Component Analysis (APPCA), a general framework for
+    representation learning with structured blockwise missingness that is robust to signal
+    heterogeneity. APPCA first recovers robust group-specific column spaces using all observed
+    feature sets, and then aligns them by projecting shared "anchor" features onto these subspaces
+    before performing PCA. This projection step induces a significant denoising effect. We
+    establish estimation error bounds for embedding reconstruction through a fine-grained
+    perturbation analysis. In particular, using a novel spectral slicing technique, our bound
+    eliminates the standard dependency on the signal strength of subject embeddings, relying
+    instead solely on the signal strength of integrated feature sets. We validate the proposed
+    method through extensive simulation studies and an application to multimodal single-cell
+    sequencing data.
+  paper_url: https://arxiv.org/abs/2602.11511
