@@ -91,3 +91,19 @@
     estimation. Finally, I will briefly discuss open challenges in handling block-wise missingness
     and recent progress in nonparametric estimation and generative modeling under this framework.
   paper_url: https://arxiv.org/abs/2509.24158
+- date: '2025-11-21'
+  speakers: [annaelaine_rosengart]
+  title: "The landscape of cellular deconvolution, with a closer look at Linseed"
+  abstract: >-
+    Cellular deconvolution is an important analytical step for experiments that rely on samples
+    that could comprise several different cell types (e.g. bulk RNA-seq, spatial genomics, etc.).
+    Though these experiments are more cost effective compared to single cell RNA-seq, the gene
+    expression data that result are an average over all of the cells in the sample, and the
+    expression levels of scarce cell types may be masked by those that are more abundant. Cellular
+    deconvolution methods estimate cell type-specific gene expression by estimating the proportion
+    of each cell type represented in the sample. In this presentation, I will discuss the current
+    landscape of cellular deconvolution including common frameworks, popular software, and open
+    problems. I will conclude with a deeper discussion of a relatively recent, entirely
+    unsupervised method, Linseed (linear subspace identification for gene expression
+    deconvolution).
+  paper_url: https://www.nature.com/articles/s41467-019-09990-5
