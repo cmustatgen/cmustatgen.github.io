@@ -131,6 +131,7 @@ maya_shen:
   name: Maya Shen
   roster: alumni
   affiliation: Genentech
+  img: /assets/people/maya-shen.jpg
 
 haeun_moon:
   name: Haeun Moon
@@ -138,19 +139,22 @@ haeun_moon:
   position: Assistant Professor
   affiliation: Department of Statistics, Seoul National University
   url: https://stat.snu.ac.kr/en/?p=24392
+  img: /assets/people/haeun-moon.jpg
 
 xuran_wang:
   name: Xuran Wang
   roster: alumni
   affiliation: Icahn School of Medicine at Mount Sinai
+  img: /assets/people/xuran-wang.jpg
 
 jin_hong_du:
   name: Jin-Hong Du
   roster: alumni
   position: Assistant Professor
   affiliation: Statistics & Actuarial Science, University of Hong Kong
-  url: https://jaydu1.github.io/dujinhong
+  url: https://jinhongdu-lab.github.io/
   sort_as: Du
+  img: /assets/people/jin-hong-du.jpg
 
 tianyu_zhang:
   name: Tianyu Zhang
@@ -158,6 +162,7 @@ tianyu_zhang:
   position: Assistant Professor
   affiliation: Statistics & Applied Probability, UC Santa Barbara
   url: https://terrytianyuzhang.github.io/
+  img: /assets/people/tianyu-zhang.jpg
 
 # ---- External speakers (no roster; appear only in talk bylines)
 maxwell_soh:
@@ -166,7 +171,9 @@ zhonghua_liu:
   name: Zhonghua Liu
   affiliation: Biostatistics, Columbia University
   url: https://publichealth.columbia.edu/profile/zhonghua-liu-scd
+  img: /assets/people/zhonghua-liu.jpg
 jing_lei:
   name: Jing Lei
   affiliation: Statistics & Data Science, Carnegie Mellon University
   url: https://www.stat.cmu.edu/~jinglei/
+  img: /assets/people/jing-lei.jpg
