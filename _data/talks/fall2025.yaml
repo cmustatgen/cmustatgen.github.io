@@ -1,0 +1,18 @@
+# Fall 2025 -- one entry per meeting, in date order. See fall2026.yaml for the
+# field reference.
+
+- date: '2025-09-12'
+  speakers: [lujing_zhang]
+  title: "LIKA: likelihood-based inference of kinase activity from phosphoproteomic data"
+  abstract: >-
+    Directed networks abound in biology. Metabolic, gene regulatory, neurocircuitry cell signaling,
+    and post-translational modifications of proteins are examples of directed networks. Statistical
+    inference about perturbations of portions of directed networks, therefore, can be a useful tool
+    for understanding various aspects of biology, including human diseases such as cancer. For
+    instance, many cancers originate from perturbation of master kinases, which disrupt the function
+    of numerous downstream proteins by alteration of their natural phosphorylation levels. We
+    present LIKA, a likelihood-based graphical framework for inferring kinase activity from
+    phosphoproteomic data. By modeling the many-to-many structure of kinase-substrate interactions,
+    LIKA achieves high efficiency with limited data while capturing network complexity.
+    Applications to schizophrenia and cell line datasets reveal novel dysregulated kinases, with
+    simulations confirming robustness and accuracy.

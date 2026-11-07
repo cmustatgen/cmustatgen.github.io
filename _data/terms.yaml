@@ -8,3 +8,6 @@
   default_room: BH 129Q
   default_time: 2pm
   note: We meet every other Friday.
+- key: fall2025
+  name: Fall 2025
+  status: past
