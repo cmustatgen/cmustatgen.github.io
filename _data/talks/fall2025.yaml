@@ -50,3 +50,22 @@
     approach reduces experimental burden while expanding our ability to probe cellular function,
     offering a powerful complement to modern functional genomics.
   paper_url: https://www.pnas.org/doi/10.1073/pnas.2525268122
+- date: '2025-10-24'
+  speakers: [catherine_wang]
+  title: "Robust empirical Bayes confidence intervals, with an eye to scCRISPR screens"
+  abstract: >-
+    This week I will talk about Empirical Bayes and how we may apply it to scCRISPR screens where
+    there are multi-level treatments and multivariate outcomes. Mainly, I'll provide some
+    background about Empirical Bayes estimators and discuss the paper "Robust Empirical Bayes
+    Confidence Intervals" (Armstrong, Kolesar, Plagborg-Moller, 2022). The authors consider the
+    normal means problem, where the goal is to estimate parameters θi when we observe
+    Yi ~ N(θi, σ²). The confidence intervals constructed from parametric empirical Bayes, which
+    assume a normal prior for θi, may substantially undercover when this prior is not true.
+    Instead, the authors construct confidence intervals for a more general setting with assumptions
+    only about the moments of the prior distribution. Lastly, I'll briefly talk about our project
+    analyzing multi-level treatments with multivariate outcomes. scCRISPR screens test many
+    perturbations (treatments) against many genes (outcomes). This generates many tests, so it may
+    be helpful to share information across both perturbations and genes to improve estimation
+    overall. I'll talk about how we might try to use empirical Bayes in this setting and share some
+    preliminary results.
+  paper_url: http://arxiv.org/abs/2004.03448
