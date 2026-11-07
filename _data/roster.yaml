@@ -1,5 +1,5 @@
 # Display order for /people/. Each entry is a slug from people.yaml.
-# Groups: faculty (with photos), member (name list), alumni.
+# Groups: faculty, member, alumni (all with photos).
 
 faculty:
 - kathryn_roeder
@@ -28,3 +28,7 @@ member:
 - zhixin_lai
 alumni:
 - qi_xu
+- maya_shen
+- haeun_moon
+- xuran_wang
+- jin_hong_du

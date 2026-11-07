@@ -1,0 +1,101 @@
+# Spring 2025 -- one entry per meeting, in date order. See fall2026.yaml for the
+# field reference.
+
+- date: '2025-01-17'
+  speakers: [yinan_guo]
+  title: "Single-cell analysis via manifold fitting"
+  abstract: >-
+    Single-cell RNA sequencing (scRNA-seq) has revolutionized our understanding of cellular
+    heterogeneity, providing unprecedented insights into complex biological systems. However, the
+    high-dimensional and noisy nature of scRNA-seq data poses significant analytical challenges.
+    While traditional manifold embedding methods have been extensively studied, manifold fitting
+    methods remain relatively underexplored, particularly in their application to biological data.
+    This talk will focus on the manifold fitting approach introduced in the recent paper
+    "Single-cell analysis via manifold fitting: A framework for RNA clustering and beyond." We will
+    examine the paper's methodology and key findings, as well as explore potential modifications
+    to these approaches to better address the unique challenges of single-cell analysis.
+  paper_url: https://www.pnas.org/doi/10.1073/pnas.2400002121
+- date: '2025-01-31'
+  speakers: [weijing_tang]
+  title: "Score-based generative models: from continuous to discrete data"
+  abstract: >-
+    Generative models have gained remarkable traction in recent years, offering groundbreaking
+    advances in image generation, text synthesis, and beyond. In this lab meeting, I will review
+    the diffusion model literature, presenting it through the lens of learning score functions, a
+    perspective that initially evolved independently and later converged with the diffusion models.
+    The discussion will extend beyond continuous data to discrete data, motivated by the discrete
+    nature of domains like EHR and genomics. I will cover recent advances in discrete diffusion
+    models, exploring their potential for modeling structured, categorical, and sequential data, as
+    well as applications like conditional imputation.
+    If time allows, I will also touch on some existing theoretical understandings about how well
+    the distribution of generated samples aligns with the true data distribution.
+- date: '2025-02-14'
+  speakers: [annaelaine_rosengart]
+  title: "Gene-level alignment of single-cell trajectories"
+  abstract: >-
+    Trajectory inference methods use gene expression data to assign an ordering to cells along an
+    axis of progression (pseudotime) often associated with an underlying biological process, and
+    the resulting trajectories can give insight into how the transcriptome changes over pseudotime.
+    Comparing trajectories between groups can be used to explore and discover differences in cell
+    dynamics that may be associated with a condition of interest. However, this comparison requires
+    aligning the trajectories along a common pseudotemporal axis. In this presentation, I will
+    discuss recent advances in trajectory alignment algorithms with a focus on the Genes2Genes
+    framework introduced in the paper "Gene-level alignment of single-cell trajectories"
+    (Sumanaweera et al., 2025). I will provide a more detailed description of the trajectory
+    alignment problem as well as a general outline of the Genes2Genes method. Finally, I will
+    present a selection of results illustrating Genes2Genes in action.
+  paper_url: https://www.nature.com/articles/s41592-024-02378-4
+- date: '2025-02-28'
+  speakers: [lorenzo_testa]
+  title: "Doubly-robust functional average treatment effect estimation"
+  abstract: >-
+    Understanding causal relationships is challenging, especially when working with complex,
+    structured data. While traditional causal inference methods handle scalar outcomes well, many
+    real-world applications involve functional data, that is, measurements that evolve over
+    continuous domains such as time or space. In this talk, I will introduce the key ideas behind
+    functional data analysis and causal inference, highlighting the unique difficulties that arise
+    when combining the two. I will then present DR-FoS, a new method designed to estimate causal
+    effects in observational studies with functional outcomes. DR-FoS exploits double robustness,
+    ensuring consistent estimation even if either the outcome model or the treatment assignment
+    model is misspecified. To show how DR-FoS works in real-world settings, I will walk through an
+    application using data from SHARE (Survey of Health, Aging, and Retirement in Europe).
+  paper_url: https://www.degruyterbrill.com/document/doi/10.1515/jci-2025-0045/html
+- date: '2025-03-28'
+  speakers: [maxwell_soh]
+  title: "Causal inference identifies average and individual treatment effects for individual cells in case-control scRNA-seq"
+  abstract: >-
+    We consider the problem of estimating average and individual treatment effects in case-control
+    scRNA-seq with unobserved confounding. We will discuss why a new causal inference-based method
+    is needed. Then we will present our method for doing this, Causal Single-cell Differential
+    Expression (CSDE), along with evidence from realistic simulations showing how CSDE outperforms
+    existing methods under confounding. We will conclude with a theoretical basis for CSDE ATE
+    being well-calibrated and CSDE ITE being unbiased.
+- date: '2025-04-11'
+  speakers: [julia_elrod]
+  title: "Longitudinal CITE-seq analysis of pediatric scleroderma patients after stem cell transplant"
+  abstract: >-
+    I'll be sharing my work with Will from an ongoing collaboration with Kathryn Torok's pediatric
+    scleroderma lab at Pitt. We are analyzing PBMC (white blood cell) CITE-seq data, which combines
+    transcriptomic and cell surface protein data. The study follows three pediatric scleroderma
+    patients longitudinally after receiving stem cell transplants. We want to understand how these
+    patients compare to healthy controls, and how their immune cells change following the
+    transplant. This data is rich in its multimodality and longitudinal nature, yet challenging due
+    to the tiny sample size. I'll be sharing analysis and modeling approaches we've tried thus far,
+    and welcome ideas from others, as we are still early on in our analysis!
+- date: '2025-04-25'
+  speakers: [qi_xu]
+  title: "Semiparametric semi-supervised learning for general targets under distribution shift and decaying overlap"
+  abstract: >-
+    In this presentation, I will provide an overview of statistical estimation and inference in the
+    semi-supervised learning setting. In recent years, a number of seminal works have established
+    foundational frameworks for addressing challenges in semi-supervised learning. The literature
+    has explored several key dimensions of the problem space, including missingness mechanisms
+    (e.g., MCAR, MAR), overlap conditions (e.g., strict vs. decaying overlap), and a range of target
+    estimands (from population means to more general estimands, such as average treatment effects
+    and linear regression parameters). I will review how different methodological approaches
+    address these challenges. Building on this foundation, I will present recent joint work with
+    Lorenzo, Jing, and Kathryn, which tackles the most general setting, allowing for MAR
+    missingness, non-overlap, and general estimands. I will conclude with a brief discussion on how
+    modern AI tools can be incorporated into the design of statistical estimators and inference
+    procedures.
+  paper_url: https://arxiv.org/abs/2505.06452

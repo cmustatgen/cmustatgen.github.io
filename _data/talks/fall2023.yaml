@@ -1,0 +1,80 @@
+# Fall 2023 -- one entry per meeting, in date order. See fall2026.yaml for the
+# field reference.
+
+- date: '2023-09-08'
+  speakers: [tianyu_zhang]
+  title: "High-dimensional mean testing problems in single-cell RNA sequencing data"
+  abstract: >-
+    High-throughput single-cell RNA sequencing technology has revolutionized our understanding of
+    cellular biology by providing unprecedented insights into the intricate functions of
+    individual cells. In this talk, we will discuss the basic question of comparing the mean
+    expression profiles of two homogenous cell groups. Specifically, we are not only interested in
+    significance results (p-value) but also attempt to answer the question of how they are
+    different simultaneously. We will present the usage of sparse-PCA, debiased estimation and
+    Lasso in a variety of settings, targeting different formulations of our scientific problems.
+- date: '2023-09-22'
+  speakers: [jin_hong_du]
+  title: "Simultaneous inference for generalized linear models with unmeasured confounders"
+  abstract: >-
+    Tens of thousands of simultaneous hypothesis tests are routinely performed in genomic studies
+    to identify differentially expressed genes. However, due to unmeasured confounders, many
+    standard statistical approaches may be substantially biased. This paper investigates the
+    large-scale hypothesis testing problem for multivariate generalized linear models in the
+    presence of confounding effects. Under arbitrary confounding mechanisms, we propose a unified
+    statistical estimation and inference framework that harnesses orthogonal structures and
+    integrates linear projections into three key stages. It first leverages multivariate responses
+    to separate marginal and uncorrelated confounding effects, recovering the confounding
+    coefficients' column space. Subsequently, latent factors and primary effects are jointly
+    estimated, utilizing ℓ1-regularization for sparsity while imposing orthogonality onto
+    confounding coefficients. Finally, we incorporate projected and weighted bias-correction steps
+    for hypothesis testing. Theoretically, we establish various effects' identification conditions
+    and non-asymptotic error bounds. We show effective Type-I error control of asymptotic z-tests
+    as sample and response sizes approach infinity. Numerical experiments demonstrate that the
+    proposed method controls the false discovery rate by the Benjamini-Hochberg procedure and is
+    more powerful than alternative methods. By comparing single-cell RNA-seq counts from two groups
+    of samples, we demonstrate the suitability of adjusting confounding effects when significant
+    covariates are absent from the model.
+  paper_url: https://arxiv.org/abs/2309.07261
+- date: '2023-11-03'
+  speakers: [maya_shen]
+  title: "Identifying genes associated with trajectory branchpoints"
+  abstract: >-
+    I will be discussing ongoing work with Kathryn Roeder and Dave Choi on identifying genes
+    which are associated with trajectory branchpoints. I'll begin by covering the concepts of
+    trajectories and pseudotime as well as some popular existing trajectory inference and
+    pseudotime estimation methods. Then, I'll explain the method so far, highlighting areas where
+    comments would be particularly helpful (although any feedback is appreciated). The hope is
+    that the trajectory and pseudotime background will allow for a productive discussion.
+- date: '2023-11-10'
+  speakers: [zhonghua_liu]
+  title: "Robust Mendelian randomization by leveraging genetic interactions and variance QTL"
+  abstract: >-
+    Mendelian randomization (MR) uses genetic variants as instrument variables (IV) to identify
+    and estimate causal effects in the presence of potential unmeasured confounding. However,
+    potential violations of core IV assumptions threaten the validity of MR in biomedical studies.
+    In this talk, I will introduce two methods to address such violations. First, in the multiple
+    IV framework, we proposed to use genetic interactions to remove the bias due to violations of
+    the IV independence and exclusion restriction assumptions; and estimation can be easily
+    carried out using existing off-the-shelf software. Second, in the single IV framework, we
+    proposed a mixed-scale robust identification strategy by leveraging outcome variance
+    quantitative trait loci under the following two homogeneity assumptions: (i) homogeneous
+    causal effect on the additive scale; and (ii) homogeneous confounding bias on the odds ratio
+    scale. We further proposed an efficient one-step update estimator based on a preliminary
+    consistent three-stage estimator. The proposed methods are illustrated using UK Biobank data.
+- date: '2023-12-01'
+  speakers: [jing_lei]
+  title: "An introduction to double/debiased machine learning"
+  abstract: >-
+    In semiparametric inference, we are interested in estimating a low-dimensional parameter
+    specified by a high-dimensional nuisance parameter. The nuisance parameter must be estimated
+    from the data and the estimation error needs to be handled with care in downstream inferences.
+    In this presentation I will provide an introduction to the basic ideas in double/debiased
+    machine learning. I will illustrate the ideas through two simple examples. No prior knowledge
+    in semiparametric inference is assumed. All you need is understanding of (conditional)
+    expectation, the central limit theorem, and Taylor expansion.
+    The two examples are taken from
+    <a href="https://arxiv.org/abs/1608.00033" target="_blank" rel="noopener">Chernozhukov, Escanciano, Ichimura, Newey and Robins (2022)</a>
+    and
+    <a href="https://arxiv.org/abs/2203.06469" target="_blank" rel="noopener">Kennedy (2022)</a>,
+    respectively.
+  paper_url: https://arxiv.org/abs/1608.00033

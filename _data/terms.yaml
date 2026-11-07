@@ -14,3 +14,15 @@
 - key: fall2025
   name: Fall 2025
   status: past
+- key: spring2025
+  name: Spring 2025
+  status: past
+- key: fall2024
+  name: Fall 2024
+  status: past
+- key: spring2024
+  name: Spring 2024
+  status: past
+- key: fall2023
+  name: Fall 2023
+  status: past

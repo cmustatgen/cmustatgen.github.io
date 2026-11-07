@@ -1,0 +1,104 @@
+# Spring 2024 -- one entry per meeting, in date order. See fall2026.yaml for the
+# field reference.
+
+- date: '2024-01-26'
+  speakers: [haeun_moon]
+  title: "Augmented doubly robust post-imputation inference for proteomic data"
+  abstract: >-
+    Proteomic data offers a direct way to explore the role of proteins in molecular mechanisms,
+    yet it often suffers from excessive missingness. Imputation is a commonly employed method to
+    address this issue. However, imputation procedures can introduce signal bleeding between
+    proteins, resulting in a notably inflated type 1 error in downstream tasks. In this project, we
+    adopt pseudo-outcomes derived from a doubly robust estimator, a well-known debiasing tool, and
+    construct a valid and effective inference on regression coefficients. We also show that
+    incorporating high-dimensional data can further reduce the variance of the estimates.
+  paper_url: https://arxiv.org/abs/2403.15802
+- date: '2024-02-09'
+  speakers: [will_townes]
+  title: "SPLASH: a statistical, reference-free genomic algorithm unifies biological discovery"
+  abstract: >-
+    A ubiquitous bioinformatics task is the alignment of sequencing reads to a reference genome.
+    However, in many settings reliable reference assemblies are unavailable. For example, microbes
+    often have unknown genomes. Even in humans or mice, cancer genomes, repetitive sequences, and
+    highly recombinant regions such as T-cell receptors can differ dramatically from references.
+    Chaung et al. (2023, from Julia Salzman's lab) developed SPLASH: a computationally efficient,
+    reference-free approach to direct analysis of sequence-level variation. The method involves
+    tiling pairs of "anchors" and "targets" across reads, then computing a contingency table
+    statistic to identify which anchors have highly variable targets across samples. SPLASH
+    p-values have a closed form and are nonasymptotically valid. I will provide an overview of the
+    SPLASH method and a brief discussion of some of its applications such as SARS-CoV-2 strain
+    identification, differential expression in single cell RNA-seq, and non-model organisms.
+  paper_url: https://www.cell.com/cell/fulltext/S0092-8674(23)01179-0
+- date: '2024-02-23'
+  speakers: [xuran_wang]
+  title: "Extracting regional signatures from single-cell brain data via task-specific subspace perturbations"
+  abstract: >-
+    Single-cell RNA sequencing (scRNA-seq) has revolutionized the study of gene expression in the
+    human brain, allowing for a more precise understanding of regional variations. However,
+    current methods for analyzing scRNA-seq data are often conducted in a heuristic manner,
+    lacking a statistically solid approach. We propose a novel method for uncovering the
+    biological signals, such as cell subtypes, contained in these regional variations by using a
+    statistically robust approach to quantify regional variances in scRNA-seq data. Correcting for
+    regional effects in scRNA-seq data is a complex task due to the large number of regions and
+    the global, simultaneous perturbation of genes. To address this challenge, we propose to use
+    low-dimensional latent structures in high-dimensional single-cell data with a focus on
+    transfer/meta-learning across different batches, and regions. By utilizing the idea of
+    task-specific subspace perturbations, we are able to extract regional signatures, providing
+    robust and accurate results, as well as novel biological insights. The proposed model is
+    validated on simulated and brain datasets, and the resulting cell representations improve
+    dividing cells by cell type and region to identify important regions, and discovering cell
+    subgroups that are significant in the development of Autism spectrum disorder (ASD) after
+    accounting for batch and regional variations. This study is a valuable contribution to the
+    field of single-cell RNA sequencing and holds great potential for future research in the
+    understanding of ASD and other diseases.
+- date: '2024-03-01'
+  speakers: [catherine_wang]
+  title: "Proximal causal inference for single-cell CRISPR screens"
+  abstract: >-
+    Single-cell CRISPR screen experiments allow for tests and estimations of causal effects by
+    perturbing a genomic region of interest and measuring changes in gene expression; however,
+    bias arises when confounding is not adequately accounted for. Usually, causal estimands cannot
+    be identified in the presence of unmeasured confounding, but proximal causal learning uses two
+    types of proxy variables, treatment-inducing and outcome-inducing confounding proxies, to allow
+    for causal inference with unmeasured confounding. Single-cell CRISPR experiments measure many
+    perturbations and genes' expressions, which may be used as such proxies. We propose a
+    methodology for analyzing causal effects between many perturbation-gene pairs using proximal
+    inference. We present two procedures, a two-stage least squares and a generalized method of
+    moments approach, that are modified with techniques such as regularization and debiasing to
+    take advantage of the wide selection of proxies and to be feasible for a large number of
+    tests. Lastly, we discuss the suitability of the proximal inference assumptions on single-cell
+    CRISPR screens and provide results from simulations and real CRISPR screen experiments.
+- date: '2024-03-22'
+  speakers: [gonzalo_mena]
+  title: "Hierarchical Bayesian pseudotime inference for multiple biophysical processes, with an application to Alzheimer's disease"
+  abstract: >-
+    The evolution of biological systems follows a continuous dynamic that many times is revealed
+    through several biophysical processes that can be observed simultaneously. Inferring the
+    latent phenotypical dynamic is a prominent topic of interest that can be modelled by assigning
+    a score, termed pseudotime, to each observation as an alternative measure of progression that
+    can be used to order observations and create a temporal series.
+    In this talk, I elaborate on a hierarchical Bayesian model for analyzing observations randomly
+    distributed across time of multiple biophysical processes. The main statistical challenge is
+    that it is unclear whether it is possible to infer pseudotimes and the biophysical processes
+    at the same time. Through simulation studies, we show that while the estimation error degrades
+    compared to the case where pseudotimes were known, it is still possible to estimate both
+    variables reliably, given a sufficient number of measurements. Moreover, we show that we can
+    leverage the shared structure in our measurements to enhance pseudotime estimation
+    capabilities.
+    We apply our methodology to study the progression of Alzheimer's disease in a brain area. We
+    demonstrate that by carefully modelling the progression of pathological proteins in a single
+    region, we can predict the progression of disease throughout the brain. We further investigate
+    how predictions inform optimal experimental design for cohort selection by maximizing the
+    observation of the entire phenotypical diversity.
+    Joint work with Anamika Agrawal and Mariano Gabitto.
+- date: '2024-04-19'
+  speakers: [maya_shen]
+  title: "causarray: a new approach for differential expression studies with unmeasured confounders"
+  abstract: >-
+    I will begin by covering some of the basics of causal inference including common frameworks
+    as well as popular estimands and estimators (under the Neyman-Rubin causal model). I will
+    then discuss causarray's method for multiple testing on log fold change to make discoveries
+    via the multiplier bootstrap and step-down procedure. Finally, I will share some results on an
+    Alzheimer's disease dataset.
+    Joint work with Jin-Hong Du.
+  paper_url: https://academic.oup.com/bib/article/27/2/bbag175/8654502

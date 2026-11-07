@@ -1,0 +1,77 @@
+# Fall 2024 -- one entry per meeting, in date order. See fall2026.yaml for the
+# field reference.
+
+- date: '2024-09-20'
+  speakers: [tianyu_zhang]
+  title: "Polygenic risk scores across ancestries as high-dimensional transfer learning"
+  abstract: >-
+    Polygenic Risk Scores (PRSs) are predictive algorithms that link individuals' genetic variants
+    to certain health outcomes. Most PRSs in the past decade have been developed using data from
+    European ancestry populations, leading to reduced accuracy in other ancestral groups due to
+    varying associations between genetic variants and outcomes. Statistically, we can also treat
+    this problem as a special example of high-dimensional transfer learning. We will review the
+    basic concepts of PRS, the related technical challenges, and the current literature solutions,
+    including our own proposal. We will also touch on some general theories of transfer learning
+    and discuss open questions relevant to this topic.
+- date: '2024-10-04'
+  speakers: [lorenzo_testa]
+  title: "Estimating protein isoform abundances with PAQu"
+  abstract: >-
+    Proteins are essential for numerous biological functions and their regulation is intricately
+    linked to a wide array of diseases. Despite their biological importance, our ability to
+    quantify protein isoform abundance levels remains limited, hindered by the fact that their
+    complex structure forbids direct observation even when using state-of-the-art technology, such
+    as mass spectrometry. To address this challenge, we introduce PAQu, a novel Bayesian method
+    that leverages multiomic information from the peptidome and transcriptome to provide accurate
+    estimates of protein isoform abundance. PAQu offers several advantages over existing methods in
+    a single and unified framework. It provides uncertainty quantification, integrates multiomic
+    information for improved accuracy, highlights the potential presence of post-translational
+    modifications, and provides a rigorous framework for differential hypothesis testing. Through
+    extensive simulations, we show that PAQu consistently outperforms competitor methods in
+    detecting differentially expressed protein isoforms and estimating their abundances. We apply
+    PAQu to a real-world dataset to investigate differences in isoform abundance levels between
+    schizophrenic and control groups. Results demonstrate PAQu ability to identify significant
+    variations in isoform abundance levels, providing valuable insights into the underlying
+    biological mechanisms of schizophrenia.
+  paper_url: https://www.pnas.org/doi/abs/10.1073/pnas.2614319123
+- date: '2024-10-25'
+  speakers: [ergan_shang]
+  title: "Testing genetic convergence between CRISPR perturbations with a two-step LASSO procedure"
+  abstract: >-
+    CRISPR perturbations not only modify the expression level of one gene under study but also
+    have widespread and systematic impacts on other genes of the cell. One of the most intriguing
+    recent problems is quantifying the similarity between two CRISPR treatments, for example,
+    whether they up-regulated the same set of downstream genes. Existing methods are mostly
+    heuristic (e.g. examining Venn diagrams of differentially expressed genes). We present a
+    two-step LASSO procedure assessing this "genetic convergence" problem. The test statistics
+    calculated from that procedure are approximately standard normal when the two perturbations
+    have an orthogonal influence on the cell expression profile. The procedure is also embedded
+    into a cross-validation type framework to enhance the robustness of discovery. Expectation is
+    verified during simulation analysis and two datasets are also analyzed as follows.
+- date: '2024-11-08'
+  speakers: [qi_xu]
+  title: "Discovering multi-cellular programs with sparse-group principal component analysis"
+  abstract: >-
+    Many biological processes involve Multi-Cellular Programs (MCPs), where groups of genes work in
+    concert across cell types to form complex functional units at the tissue level.
+    High-resolution single-cell RNA sequencing data allows us to investigate MCPs through latent
+    factor modeling. In this talk, I will review prominent methods for analyzing multi-cell type
+    (or, more broadly, multi-view) data and highlight two significant challenges in MCP discovery.
+    First, many current approaches overlook coordinated gene expression patterns across cell
+    subtypes, potentially leading to inaccurate signal estimation. Second, there is a
+    "double-dipping" issue where the same dataset is used for both latent factor modeling and
+    statistical inference, as recently discussed by Zhang et al. (2024). I will focus on the first
+    issue, introducing a sparse-group principal component analysis method that leverages the
+    intrinsic structures within MCPs to enhance estimation accuracy.
+- date: '2024-11-22'
+  speakers: [maya_shen]
+  title: "Methods for multi-omics data: from canonical correlation analysis to SmCCNet"
+  abstract: >-
+    Multi-omics is a relatively new area of research where one has data from multiple "omes"
+    (e.g. genome, proteome, etc.). There are various aims and methods within the field of
+    multi-omics, but most questions seek to leverage the multiple layers to gain insight into
+    interactions between/across omes. In this talk, I will cover some existing methods for working
+    with multi-omics data: canonical correlation analysis (CCA), sparse canonical correlation
+    analysis (sCCA), and SmCCNet (which builds off of sCCA). I will also show some preliminary
+    results from analyzing our multi-omics dataset which contains protein, phosphorylation, lipid,
+    and metabolomics data using these and related methods.

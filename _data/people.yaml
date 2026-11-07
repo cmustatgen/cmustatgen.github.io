@@ -126,3 +126,42 @@ qi_xu:
   affiliation: School of Statistics, University of Minnesota
   url: https://qi-xu.com/
   img: /assets/people/qi-xu.jpg
+
+maya_shen:
+  name: Maya Shen
+  roster: alumni
+  affiliation: Genentech
+
+haeun_moon:
+  name: Haeun Moon
+  roster: alumni
+  position: Assistant Professor
+  affiliation: Department of Statistics, Seoul National University
+  url: https://stat.snu.ac.kr/en/?p=24392
+
+xuran_wang:
+  name: Xuran Wang
+  roster: alumni
+  affiliation: Icahn School of Medicine at Mount Sinai
+
+jin_hong_du:
+  name: Jin-Hong Du
+  roster: alumni
+  position: Assistant Professor
+  affiliation: Statistics & Actuarial Science, University of Hong Kong
+  url: https://jaydu1.github.io/dujinhong
+  sort_as: Du
+
+# ---- External speakers (no roster; appear only in talk bylines)
+maxwell_soh:
+  name: Maxwell Soh
+tianyu_zhang:
+  name: Tianyu Zhang
+zhonghua_liu:
+  name: Zhonghua Liu
+  affiliation: Biostatistics, Columbia University
+  url: https://publichealth.columbia.edu/profile/zhonghua-liu-scd
+jing_lei:
+  name: Jing Lei
+  affiliation: Statistics & Data Science, Carnegie Mellon University
+  url: https://www.stat.cmu.edu/~jinglei/
