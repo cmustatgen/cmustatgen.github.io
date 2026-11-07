@@ -152,11 +152,16 @@ jin_hong_du:
   url: https://jaydu1.github.io/dujinhong
   sort_as: Du
 
+tianyu_zhang:
+  name: Tianyu Zhang
+  roster: alumni
+  position: Assistant Professor
+  affiliation: Statistics & Applied Probability, UC Santa Barbara
+  url: https://terrytianyuzhang.github.io/
+
 # ---- External speakers (no roster; appear only in talk bylines)
 maxwell_soh:
   name: Maxwell Soh
-tianyu_zhang:
-  name: Tianyu Zhang
 zhonghua_liu:
   name: Zhonghua Liu
   affiliation: Biostatistics, Columbia University
