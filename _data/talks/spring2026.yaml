@@ -74,3 +74,6 @@
     cancer ST data, identifying biologically meaningful differentially expressed genes that were
     otherwise obscured in non-debiased analyses. Our approach provides a rigorous foundation for
     moving beyond mere prediction to valid discovery in spatial omics.
+- date: '2026-04-03'
+  speakers: [qi_xu, weijing_tang]
+  title: AI for Research
