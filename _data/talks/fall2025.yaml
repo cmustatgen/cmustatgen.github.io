@@ -36,3 +36,16 @@
     showcase the efficacy of our DR+ACC estimator both through extensive simulations and by applying
     it to the analysis of Alzheimer's disease proteomics data.
   paper_url: https://arxiv.org/abs/2509.22446
+- date: '2025-10-10'
+  speakers: [ergan_shang]
+  title: "Predicting the unseen: a diffusion-based debiasing framework for transcriptional response prediction at single-cell resolution"
+  abstract: >-
+    Understanding how cells respond to perturbations of genes is central to uncovering the rules of
+    gene regulation. Single-cell RNA sequencing combined with CRISPR-based perturbations has
+    transformed this effort, but large-scale experiments remain costly and difficult to perform. Our
+    work introduces dbDiffusion, a computational framework that can reliably predict how cells would
+    respond to genetic perturbations that were never experimentally performed. By learning patterns
+    from existing data, dbDiffusion extends the reach of perturbation experiments, enabling
+    discoveries such as identifying genes that change their activity under specific conditions. This
+    approach reduces experimental burden while expanding our ability to probe cellular function,
+    offering a powerful complement to modern functional genomics.
