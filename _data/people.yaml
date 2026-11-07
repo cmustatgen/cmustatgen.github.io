@@ -118,7 +118,11 @@ zhixin_lai:
   roster: member
   img: /assets/people/zhixin-lai.jpg
 
-# ---- Speakers not on the roster
+# ---- Alumni
 qi_xu:
   name: Qi Xu
-  roster: absent
+  roster: alumni
+  position: Assistant Professor
+  affiliation: School of Statistics, University of Minnesota
+  url: https://qi-xu.com/
+  img: /assets/people/qi-xu.jpg
