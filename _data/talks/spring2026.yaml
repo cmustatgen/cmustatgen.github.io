@@ -1,0 +1,29 @@
+# Spring 2026 -- one entry per meeting, in date order. See fall2026.yaml for the
+# field reference.
+
+- date: '2026-02-06'
+  speakers: [rebecca_farina]
+  title: "Biophysical Bayesian inference for neurodegenerative dynamics: a multi-temporal framework"
+  abstract: >-
+    Understanding disease progression from molecular data often requires aligning individuals along
+    a latent pseudotemporal axis. The B-BIND framework introduced a biophysically motivated Bayesian
+    model for inferring such pseudotime from cross-sectional snapshots of Alzheimer's pathology
+    (Agrawal et al., 2024). However, its current formulation assumes a single shared pseudotemporal
+    trajectory across all measured features, limiting its ability to capture heterogeneous
+    progression patterns across biomarkers.
+    We extend B-BIND to allow multiple feature-specific pseudotimes, enabling flexible modeling of
+    diverse temporal dynamics across molecular markers. Our approach introduces a hierarchical
+    Bayesian model that clusters features according to shared progression behavior while jointly
+    inferring a global donor ordering and cluster-specific trajectories. This is accomplished
+    through a novel computational strategy that solves a relaxed permutation problem within the
+    Bayesian framework, enforcing partial sharing of pseudotime orderings across features while
+    permitting structured deviations between clusters.
+    Through simulation studies and applications to Alzheimer's pathology data from both the Seattle
+    Alzheimer's Disease Brain Cell Atlas and the ROSMAP cohort, we demonstrate improved
+    identifiability of progression signals, more accurate donor alignment, and more interpretable
+    clustering of features. Notably, the inferred donor orderings exhibit stronger correlation with
+    classical neuropathological staging systems such as Braak and Thal scores, highlighting the
+    model's ability to better integrate heterogeneous molecular features into a coherent disease
+    progression map. Together, these advances provide a richer and more data-driven framework for
+    characterizing neurodegenerative dynamics across diverse molecular readouts.
+  paper_url: https://www.biorxiv.org/content/10.64898/2026.05.27.728207v2
