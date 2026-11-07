@@ -49,3 +49,28 @@
     method through extensive simulation studies and an application to multimodal single-cell
     sequencing data.
   paper_url: https://arxiv.org/abs/2602.11511
+- date: '2026-03-20'
+  speakers: [lorenzo_testa]
+  title: Post-imputation inference for spatial transcriptomics data
+  abstract: >-
+    The rapid development of spatial transcriptomics (ST) has provided unprecedented opportunities
+    to explore tissue architectures. However, many high-resolution techniques are constrained by
+    small gene panels, often capturing only a fraction of the transcriptome. This high degree of
+    missingness, where the majority of genes remain undetected, limits the application value of ST
+    data for comprehensive biological discovery. While deep learning frameworks now allow for the
+    spatial reconstruction of these missing genes, downstream statistical inference (such as
+    spatial differential gene expression testing) on imputed values remains unreliable due to
+    unaddressed prediction uncertainty. To address this challenge, we develop Doubly-Debiased
+    Spatially Permuted Inference (DDSPI), a novel framework designed for valid post-imputation
+    inference. DDSPI employs a two-stage debiasing strategy. First, we construct debiased
+    pseudo-outcomes by leveraging the predictive performance of a "neighborhood" of highly
+    correlated observed genes. Then, to account for spatial autocorrelation, we implement a
+    "whitening" procedure using nonparametric regression residuals, effectively isolating the
+    biological signal from spatial trends. Significance is then assessed via a novel
+    spatially-aware permutation testing strategy that utilizes treatment mask rolling to preserve
+    the underlying spatial structure. We demonstrate the effectiveness of DDSPI by conducting
+    extensive simulations, where our method maintains stable error control across multiple
+    scenarios where other methods fail. Furthermore, we apply DDSPI to mouse brain and human breast
+    cancer ST data, identifying biologically meaningful differentially expressed genes that were
+    otherwise obscured in non-debiased analyses. Our approach provides a rigorous foundation for
+    moving beyond mere prediction to valid discovery in spatial omics.
