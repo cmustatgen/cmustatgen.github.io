@@ -117,3 +117,8 @@ zhixin_lai:
   name: Zhixin Lai
   roster: member
   img: /assets/people/zhixin-lai.jpg
+
+# ---- Speakers not on the roster
+qi_xu:
+  name: Qi Xu
+  roster: absent

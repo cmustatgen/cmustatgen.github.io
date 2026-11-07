@@ -69,3 +69,24 @@
     overall. I'll talk about how we might try to use empirical Bayes in this setting and share some
     preliminary results.
   paper_url: http://arxiv.org/abs/2004.03448
+- date: '2025-11-07'
+  speakers: [qi_xu]
+  title: Every Row, Every Column, All at Once
+  abstract: >-
+    In this talk, I will introduce a setting we call block-wise missingness, a structure that often
+    arises when integrating data from multiple sources or modalities, such as electronic health
+    records, single-cell sequencing, and longitudinal studies. We study parameter estimation and
+    inference under this structure. Our approach, grounded in semiparametric theory and inspired by
+    prediction-powered inference, leverages off-the-shelf AI models (predictive or generative) to
+    handle missing completely at random mechanisms. The key idea is to approximate the optimal
+    estimating equation through a novel and tractable Restricted ANOVA HierarchY (RAY)
+    approximation. The resulting estimator, Inference for Blockwise Missingness IBM(RAY),
+    incorporates pretrained AI models while carefully controlling asymptotic variance via
+    model-specific tuning. We further extend IBM(RAY) to a broader family of estimators and derive
+    the most efficient member of this class, IBM(Adaptive), by solving a constrained quadratic
+    optimization problem. All IBM estimators are unbiased and, importantly, asymptotically
+    guarantee efficiency gains over naive complete-case estimators, regardless of the predictive
+    accuracy of the AI models used. We demonstrate their finite-sample performance and numerical
+    stability through simulation studies and an application to surface protein abundance
+    estimation. Finally, I will briefly discuss open challenges in handling block-wise missingness
+    and recent progress in nonparametric estimation and generative modeling under this framework.
