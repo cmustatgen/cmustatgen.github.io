@@ -118,4 +118,18 @@
   skip_up_next: true               # talk given; Up next moves to the following meeting
 - date: '2026-11-20'
   speakers: [gonzalo_mena]
-  title: TBD
+  title: Vascular-Niche Molecular Determinants of Cognitive Vulnerability and Resilience in Alzheimer Disease and Related Dementia
+  abstract: >-
+    Although much progress has been made in characterizing the biological causes of cognitive
+    decline in late life (e.g., dementia in Alzheimer's disease), much variability remains
+    unexplained by models based on traditional measures of amyloid/tau pathology and overall
+    inflammatory and neuronal injury burden. At the same time, the importance of vascular
+    contributions to cognitive impairment is becoming more widely recognized.
+
+    In this talk, I will discuss what can be learned about vascular contributions to cognitive
+    impairment from human imaging, proteomics, genetics, and multi-omics, either cross sectionally
+    (e.g., post mortem) or longitudinally (e.g., in vivo), and how these findings can lead to
+    experimentally testable hypotheses on underlying mechanisms. In particular, I will discuss the
+    possible role of some blood-brain barrier constructs, including endothelial and perivascular
+    signatures, both in marking the progression of pathology or in cognitive resilience and
+    vulnerability after accounting for pathology.
