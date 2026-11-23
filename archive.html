@@ -65,8 +65,9 @@ permalink: /archive/
     {%- if term_keys contains term.key -%}
     <div class="term-section" id="term-{{ term.key }}">
       {%- assign shown = 0 -%}
+      {%- comment -%} Newest-first within each term, matching the term order. {%- endcomment -%}
       {%- capture rows -%}
-        {%- for t in site.data.talks[term.key] -%}
+        {%- for t in site.data.talks[term.key] reversed -%}
           {%- assign d = t.date | date: '%Y-%m-%d' -%}
           {%- assign title = t.title | strip -%}
           {%- if t.kind == nil and title != '' and title != 'TBD' and title != 'Title TBD' and d <= today -%}

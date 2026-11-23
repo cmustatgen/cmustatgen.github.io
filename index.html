@@ -57,8 +57,9 @@ title: Home
     </p>
   {%- endif -%}
 
+  {%- comment -%} Displayed newest-first; the data files stay in date order. {%- endcomment -%}
   <div class="talk-list">
-    {%- for t in talks -%}
+    {%- for t in talks reversed -%}
       {% include talk.html talk=t term=term next_date=next_date %}
     {%- endfor -%}
   </div>
